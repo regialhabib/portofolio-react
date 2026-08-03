@@ -1,18 +1,104 @@
-# React + Vite
+# Portofolio Regi Al Habib
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portofolio pribadi berbasis React.js untuk menampilkan profil, resume, skill, kontak, dan studi kasus proyek sistem informasi berbasis web.
 
-Currently, two official plugins are available:
+Aplikasi ini merupakan hasil migrasi bertahap dari situs statis HTML, CSS, dan JavaScript ke React dengan pendekatan component-based, data JSON, dan visual brutalism terstruktur.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Fitur
 
-## React Compiler
+- Workspace portfolio dengan sidebar profil dan navigasi tab.
+- Halaman Tentang, Resume, Proyek, dan Kontak.
+- Empat studi kasus dengan route dinamis.
+- Data profil, resume, dan proyek disimpan dalam file JSON.
+- Galeri gambar proyek dengan metadata `alt`.
+- Drawer profil dan kontak pada tampilan mobile.
+- Tautan email, WhatsApp, LinkedIn, dan GitHub.
+- Download resume dalam format PDF.
+- Responsive layout desktop dan mobile.
+- Animasi ringan menggunakan Motion.
+- Fallback 404 untuk route dan slug proyek yang tidak ditemukan.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Route
 
-Note: This will impact Vite dev & build performances.
+| Route | Keterangan |
+| --- | --- |
+| `/` | Mengarah ke workspace portfolio pada tab Tentang |
+| `/tentang` | Profil dan skill |
+| `/resume` | Pendidikan dan pengalaman |
+| `/proyek` | Daftar empat proyek |
+| `/proyek/:slug` | Detail studi kasus dinamis |
+| `/kontak` | Informasi kontak dan sosial |
+| `/portfolio` | Route kompatibilitas menuju `/tentang` |
 
-## Expanding the ESLint configuration
+## Teknologi
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite
+- React Router
+- Tailwind CSS
+- shadcn/ui dan Base UI
+- Motion
+- Lucide React
+- ESLint
+
+## Menjalankan Proyek
+
+Pastikan Node.js dan npm sudah tersedia.
+
+```bash
+npm install
+npm run dev
+```
+
+Aplikasi akan tersedia pada alamat yang ditampilkan oleh Vite, biasanya `http://localhost:5173`.
+
+## Script
+
+```bash
+npm run dev      # Menjalankan development server
+npm run build    # Membuat production build
+npm run preview  # Menjalankan preview production build
+npm run lint     # Menjalankan ESLint
+```
+
+## Struktur Utama
+
+```text
+portofolio-react/
+├── public/                 # Favicon, icon sprite, dan file resume
+├── src/
+│   ├── assets/             # Foto profil dan gambar proyek
+│   ├── components/
+│   │   ├── landing/        # Komponen kartu dan heading proyek
+│   │   ├── layout/         # Layout umum situs
+│   │   ├── portfolio/      # Layout workspace, sidebar, tab, dan studi kasus
+│   │   └── ui/             # Komponen UI dari shadcn/ui
+│   ├── data/               # profile.json, resume.json, projects.json
+│   ├── lib/                # Utility dan resolver aset
+│   ├── pages/              # Halaman route aplikasi
+│   ├── App.jsx
+│   └── index.css
+├── TASK.md                 # Rencana, keputusan, dan status migrasi
+└── package.json
+```
+
+## Data dan Aset
+
+- `src/data/profile.json` berisi identitas, kontak, sosial media, skill, dan informasi resume.
+- `src/data/resume.json` berisi pendidikan dan pengalaman.
+- `src/data/projects.json` berisi seluruh konten studi kasus dan referensi gambar.
+- Gambar proyek berada di `src/assets/projects/<slug>/`.
+- Resume tersedia di `public/resume-regi-al-habib.pdf`.
+
+## Workflow Pengembangan
+
+Migrasi dilakukan bertahap dan dicatat di [TASK.md](./TASK.md). Perubahan UI/UX besar harus diawali mockup atau wireframe yang direview sebelum implementasi.
+
+Sebelum membuat commit, jalankan:
+
+```bash
+npm run lint
+npm run build
+```
+
+Implementasi HTML lama berada di root repository induk dan dipertahankan sebagai referensi. Aplikasi React aktif berada di folder ini.
