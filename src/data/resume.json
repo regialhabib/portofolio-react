@@ -1,0 +1,36 @@
+{
+  "education": [
+    {
+      "title": "Sistem Informasi, UIN STS Jambi",
+      "period": "2021 - 2026",
+      "description": "IPK 3.57 / 4.00"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Freelance Web Developer",
+      "period": "2024 - Sekarang",
+      "description": "Mengembangkan sistem informasi berbasis web sesuai kebutuhan klien, dari analisis sampai implementasi; membangun aplikasi Laravel dengan MySQL; serta melakukan testing dan debugging."
+    },
+    {
+      "title": "Magang, Diskominfo Provinsi Jambi (JDAC)",
+      "period": "Februari - Juli 2024",
+      "description": "Melakukan normalisasi dan pembersihan data, menyiapkan data mentah untuk analisis, serta membantu visualisasi data menggunakan Tableau."
+    },
+    {
+      "title": "Divisi Publikasi dan Dokumentasi, Program KKN",
+      "period": "Agustus - Oktober 2024",
+      "description": "Mendukung dokumentasi administrasi dan input data, mengelola materi visual, fotografi, dan videografi kegiatan."
+    }
+  ],
+  "technicalSkills": [
+    "Laravel",
+    "PHP",
+    "MySQL",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Codeigniter",
+    "Microsoft Excel"
+  ]
+}

@@ -1,0 +1,42 @@
+﻿{
+    "name":  "Regi Al Habib",
+    "role":  "Fullstack Developer",
+    "location":  "Jambi, Indonesia",
+    "email":  "habibregi6@gmail.com",
+    "whatsapp":  {
+                     "label":  "+62 856-6966-4144",
+                     "url":  "https://wa.me/6285669664144"
+                 },
+    "availability":  "Terbuka untuk peluang",
+    "profileImage":  {
+                         "src":  "profile/foto-formal.jpeg",
+                         "alt":  "Foto formal Regi Al Habib"
+                     },
+    "hero":  {
+                 "eyebrow":  "Web developer · Jambi, Indonesia",
+                 "title":  "Membangun sistem web yang rapi, fungsional, dan berbasis data.",
+                 "description":  "Saya Regi Al Habib, web developer yang membangun sistem informasi dari tahap analisis hingga implementasi dengan perhatian pada data yang terstruktur."
+             },
+    "about":  {
+                  "title":  "Teknologi seharusnya membuat pekerjaan yang rumit terasa lebih terstruktur.",
+                  "description":  "Saya terbiasa mengembangkan sistem informasi berbasis web sesuai kebutuhan pengguna, dari analisis hingga implementasi. Selain pengembangan aplikasi, saya memiliki pengalaman menyiapkan data melalui proses pembersihan, normalisasi, dan visualisasi."
+              },
+    "skills":  [
+                   "PHP",
+                   "JavaScript",
+                   "Laravel",
+                   "MySQL",
+                   "REST API",
+                   "AWS Cloud",
+                   "Node.js"
+               ],
+    "social":  {
+                   "linkedin":  "https://www.linkedin.com/in/regi-al-habib-114099424",
+                   "github":  "https://github.com/regialhabib"
+               },
+    "resume":  {
+                   "label":  "Download Resume",
+                   "file":  "/resume-regi-al-habib.pdf",
+                   "downloadName":  "CV-Regi-Al-Habib.pdf"
+               }
+}

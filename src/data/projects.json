@@ -1,0 +1,175 @@
+﻿[
+    {
+        "slug":  "pengajuan-cuti",
+        "title":  "Sistem Pengajuan Cuti",
+        "category":  "Sistem informasi berbasis web",
+        "role":  "Freelance",
+        "summary":  "Sistem berbasis web untuk mendukung proses pengajuan dan pengelolaan cuti secara lebih terstruktur.",
+        "overview":  "Sistem informasi berbasis web untuk mengelola alur pengajuan dan persetujuan cuti karyawan secara terstruktur pada organisasi multi-departemen, dengan hierarki persetujuan berjenjang sesuai struktur jabatan masing-masing departemen.",
+        "focus":  "Pengembangan sistem informasi",
+        "status":  "Portofolio proyek",
+        "features":  [
+                         "Role-based access control dengan empat peran: Admin, Manager, Kasi, dan Karyawan, masing-masing dengan hak akses dan tampilan berbeda.",
+                         "Alur persetujuan cuti berjenjang otomatis mengikuti struktur organisasi: pengajuan karyawan → kasi → manager; pengajuan kasi langsung ke manager departemen.",
+                         "Dukungan multi-departemen, di mana setiap departemen memiliki hierarki persetujuan sendiri: satu manager, beberapa kasi, dan beberapa karyawan per kasi.",
+                         "Modul manajemen master data untuk admin: pengaturan kuota cuti, jenis cuti, struktur departemen, serta manajemen data kasi dan pengguna."
+                     ],
+        "challenge":  "Tantangan utama proyek ini adalah merancang logika penentuan approver secara dinamis berdasarkan posisi user dalam hierarki organisasi. Sistem harus bisa mengenali apakah user yang mengajukan cuti adalah karyawan atau kasi, lalu secara otomatis mengarahkan approval ke atasan yang tepat sesuai departemennya masing-masing — mengingat setiap departemen punya struktur manager-kasi-karyawan yang berbeda-beda. Ini menuntut perancangan struktur database dan relasi antar-role yang cermat, supaya alur approval tetap konsisten meskipun jumlah kasi atau karyawan di tiap departemen berbeda-beda.",
+        "technologies":  [
+                             "Laravel",
+                             "PHP",
+                             "MySQL",
+                             "HTML",
+                             "CSS",
+                             "JavaScript"
+                         ],
+        "assets":  {
+                       "thumbnail":  "projects/pengajuan-cuti/thumbnail.png",
+                       "thumbnailAlt":  "Tampilan aplikasi sistem pengajuan cuti",
+                       "gallery":  [
+                                       {
+                                           "src":  "projects/pengajuan-cuti/image-1.png",
+                                           "alt":  "Tampilan antarmuka sistem pengajuan cuti"
+                                       },
+                                       {
+                                           "src":  "projects/pengajuan-cuti/image-2.png",
+                                           "alt":  "Tampilan antarmuka sistem pengajuan cuti"
+                                       },
+                                       {
+                                           "src":  "projects/pengajuan-cuti/image-3.png",
+                                           "alt":  "Tampilan antarmuka sistem pengajuan cuti"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "slug":  "koperasi",
+        "title":  "Sistem Koperasi Simpan Pinjam",
+        "category":  "Sistem informasi berbasis web",
+        "role":  "Freelance",
+        "summary":  "Sistem informasi untuk mendukung kebutuhan operasional koperasi simpan pinjam.",
+        "overview":  "Sistem informasi berbasis web untuk mengelola operasional koperasi simpan pinjam, mencakup pengelolaan simpanan dan pinjaman anggota, validasi pembayaran tagihan, hingga pelaporan untuk pengambilan keputusan.",
+        "focus":  "Pengembangan sistem informasi",
+        "status":  "Portofolio proyek",
+        "features":  [
+                         "Role-based access control dengan tiga peran: Kepala Koperasi, Admin, dan User (anggota), masing-masing dengan akses berbeda.",
+                         "Modul simpanan dan pinjaman untuk user, termasuk pengajuan pinjaman dan setoran simpanan.",
+                         "Validasi pembayaran tagihan oleh admin untuk memastikan pembayaran anggota sesuai sebelum diproses.",
+                         "Dashboard dan laporan untuk kepala koperasi, memberikan gambaran kondisi keuangan dan aktivitas koperasi secara keseluruhan.",
+                         "Pengelolaan data simpanan dan pinjaman anggota secara terpusat oleh admin."
+                     ],
+        "challenge":  "Tantangan utama proyek ini adalah merancang struktur data yang mampu melacak riwayat transaksi simpanan dan pinjaman setiap anggota secara akurat, termasuk status tagihan dan validasi pembayaran, sehingga data yang ditampilkan di dashboard dan laporan kepala koperasi selalu mencerminkan kondisi terkini. Perhitungan saldo simpanan maupun sisa pinjaman perlu konsisten meski terjadi banyak transaksi dari berbagai anggota secara bersamaan.",
+        "technologies":  [
+                             "PHP",
+                             "MySQL",
+                             "HTML",
+                             "CSS",
+                             "JavaScript"
+                         ],
+        "assets":  {
+                       "thumbnail":  "projects/koperasi/thumbnail.png",
+                       "thumbnailAlt":  "Tampilan aplikasi sistem koperasi simpan pinjam",
+                       "gallery":  [
+                                       {
+                                           "src":  "projects/koperasi/image-1.png",
+                                           "alt":  "Tampilan antarmuka sistem koperasi simpan pinjam"
+                                       },
+                                       {
+                                           "src":  "projects/koperasi/image-2.png",
+                                           "alt":  "Tampilan antarmuka sistem koperasi simpan pinjam"
+                                       },
+                                       {
+                                           "src":  "projects/koperasi/image-3.png",
+                                           "alt":  "Tampilan antarmuka sistem koperasi simpan pinjam"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "slug":  "puskesmas",
+        "title":  "Sistem Pelayanan Puskesmas",
+        "category":  "Sistem informasi berbasis web",
+        "role":  "Freelance",
+        "summary":  "Sistem berbasis web untuk membantu kebutuhan pelayanan dan pengelolaan informasi puskesmas.",
+        "overview":  "Sistem informasi berbasis web untuk mengelola alur pelayanan kesehatan di puskesmas, mencakup proses pemeriksaan pasien oleh dokter, peresepan obat, hingga pengelolaan data master oleh admin.",
+        "focus":  "Pengembangan sistem informasi",
+        "status":  "Portofolio proyek",
+        "features":  [
+                         "Role-based access control dengan tiga peran: Admin, Dokter, dan Pasien, masing-masing dengan akses dan tampilan sesuai kebutuhan.",
+                         "Modul pemeriksaan pasien untuk dokter, termasuk pencatatan hasil pemeriksaan dan peresepan obat.",
+                         "Modul manajemen master data untuk admin: data tindakan medis, obat, poli, dan data pendukung lainnya.",
+                         "Integrasi antar-modul yang menghubungkan data pasien, riwayat pemeriksaan, dan resep obat secara terstruktur."
+                     ],
+        "challenge":  "Tantangan utama proyek ini adalah merancang struktur database yang menghubungkan beberapa entitas terkait (pasien, dokter, poli, tindakan, obat, dan resep) secara relasional, sehingga data pemeriksaan dan resep dari seorang dokter dapat tercatat dengan akurat dan tertaut ke pasien serta poli yang tepat. Perancangan ini perlu memastikan fleksibilitas ketika jenis tindakan atau daftar obat bertambah, tanpa mengubah struktur inti sistem.",
+        "technologies":  [
+                             "Laravel",
+                             "PHP",
+                             "MySQL",
+                             "CSS",
+                             "Bootstrap"
+                         ],
+        "assets":  {
+                       "thumbnail":  "projects/puskesmas/thumbnail.png",
+                       "thumbnailAlt":  "Tampilan aplikasi sistem pelayanan puskesmas",
+                       "gallery":  [
+                                       {
+                                           "src":  "projects/puskesmas/image-1.png",
+                                           "alt":  "Tampilan antarmuka sistem pelayanan puskesmas"
+                                       },
+                                       {
+                                           "src":  "projects/puskesmas/image-2.png",
+                                           "alt":  "Tampilan antarmuka sistem pelayanan puskesmas"
+                                       },
+                                       {
+                                           "src":  "projects/puskesmas/image-3.png",
+                                           "alt":  "Tampilan antarmuka sistem pelayanan puskesmas"
+                                       }
+                                   ]
+                   }
+    },
+    {
+        "slug":  "booking-rumah",
+        "title":  "Sistem Booking Rumah",
+        "category":  "Sistem informasi berbasis web",
+        "role":  "Freelance",
+        "summary":  "Sistem berbasis web untuk mengelola proses booking unit rumah pada perumahan.",
+        "overview":  "Sistem informasi berbasis web untuk mengelola proses booking unit rumah pada perumahan, mencakup alur pemesanan oleh customer, pembayaran, hingga validasi transaksi oleh admin.",
+        "focus":  "Pengembangan sistem informasi",
+        "status":  "Portofolio proyek",
+        "features":  [
+                         "Role-based access control dengan dua peran: Admin dan Customer, masing-masing dengan hak akses berbeda.",
+                         "Modul booking rumah untuk customer, termasuk upload bukti transfer sebagai bagian dari proses pembayaran.",
+                         "Validasi transaksi oleh admin untuk memastikan pembayaran sesuai sebelum status booking dikonfirmasi.",
+                         "Generate kwitansi otomatis untuk customer setelah transaksi berhasil divalidasi.",
+                         "Modul manajemen master data rumah untuk admin.",
+                         "Fitur arsip terpusat yang menyimpan seluruh bukti bayar dan kwitansi, dapat diakses admin untuk kebutuhan audit dan pelacakan transaksi."
+                     ],
+        "challenge":  "Tantangan utama proyek ini adalah merancang alur status transaksi yang konsisten dari booking, upload bukti bayar, validasi admin, hingga penerbitan kwitansi — memastikan setiap perubahan status tersimpan dan tertaut dengan benar ke file bukti bayar maupun kwitansi terkait. Sistem arsip juga perlu dirancang agar admin dapat menelusuri riwayat transaksi dan dokumen pendukungnya secara terstruktur, tanpa risiko file yang tidak tertaut ke transaksi yang benar.",
+        "technologies":  [
+                             "Laravel",
+                             "PHP",
+                             "MySQL",
+                             "HTML",
+                             "CSS",
+                             "JavaScript"
+                         ],
+        "assets":  {
+                       "thumbnail":  "projects/booking-rumah/thumbnail.png",
+                       "thumbnailAlt":  "Tampilan aplikasi sistem booking rumah",
+                       "gallery":  [
+                                       {
+                                           "src":  "projects/booking-rumah/image-1.png",
+                                           "alt":  "Tampilan antarmuka sistem booking rumah"
+                                       },
+                                       {
+                                           "src":  "projects/booking-rumah/image-2.png",
+                                           "alt":  "Tampilan antarmuka sistem booking rumah"
+                                       },
+                                       {
+                                           "src":  "projects/booking-rumah/image-3.png",
+                                           "alt":  "Tampilan antarmuka sistem booking rumah"
+                                       }
+                                   ]
+                   }
+    }
+]
