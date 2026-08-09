@@ -16,11 +16,13 @@ function ProjectCard({ project, index }) {
       transition={{ duration: 0.35, delay: index * 0.06 }}
     >
       <Link className="flex h-full flex-col" to={`/proyek/${project.slug}`}>
-        <div className="aspect-[4/3] overflow-hidden border-b-4 border-foreground bg-secondary">
+        <div className="aspect-[16/10] overflow-hidden border-b-4 border-foreground bg-secondary">
           <img
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             src={thumbnail}
             alt={project.assets.thumbnailAlt}
+            loading="lazy"
+            decoding="async"
           />
         </div>
         <div className="flex flex-1 flex-col p-5 sm:p-6">

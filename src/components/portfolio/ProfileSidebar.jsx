@@ -9,7 +9,7 @@ function ProfileSidebar({ isMobileOpen, onMobileClose }) {
   const profileContent = (
     <>
       <div className="border-b-4 border-foreground pb-6">
-        <div className="mx-auto mb-5 aspect-square w-40 overflow-hidden border-4 border-foreground bg-secondary sm:w-48 lg:w-full">
+        <div className="mx-auto mb-5 aspect-square w-40 overflow-hidden border-4 border-foreground bg-secondary sm:w-48 lg:w-48">
           <img className="h-full w-full object-cover" src={getAssetUrl(profile.profileImage.src)} alt={profile.profileImage.alt} />
         </div>
         <h1 className="text-3xl font-black uppercase leading-none">{profile.name}</h1>
@@ -36,7 +36,7 @@ function ProfileSidebar({ isMobileOpen, onMobileClose }) {
 
   return (
     <>
-      <aside className="hidden w-[300px] shrink-0 border-r-4 border-foreground bg-card p-6 lg:sticky lg:top-0 lg:block lg:h-screen"><div className="mb-6 border-b-4 border-foreground pb-4 font-mono text-xl font-black uppercase tracking-tight">Regialhabib<span className="text-accent">.</span></div>{profileContent}</aside>
+      <aside className="hidden w-[300px] shrink-0 border-r-4 border-foreground bg-card p-6 lg:sticky lg:top-0 lg:block lg:h-dvh lg:overflow-y-auto"><div className="mb-6 border-b-4 border-foreground pb-4 font-mono text-xl font-black uppercase tracking-tight">Regialhabib<span className="text-accent">.</span></div>{profileContent}</aside>
       <AnimatePresence>
         {isMobileOpen && (
           <>

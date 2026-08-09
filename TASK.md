@@ -76,6 +76,43 @@ Hasil review menunjukkan landing page marketing saat ini kurang sesuai dibanding
 - [x] Uji tidak ada overflow horizontal pada mobile.
 - [x] Uji refresh, back, dan forward pada seluruh nested route.
 
+
+## Evaluasi Skala UI Halaman Proyek
+
+Review UI menunjukkan halaman `/proyek` dan `/proyek/:slug` terasa terlalu besar. Brutalism tetap dipertahankan, tetapi skala visual perlu dibuat lebih padat agar lebih sesuai sebagai portfolio.
+
+### Target Revisi Halaman Proyek
+
+- [ ] Buat mockup revisi ukuran card dan detail proyek sebelum implementasi.
+- [ ] Kecilkan judul halaman proyek menjadi sekitar `text-3xl sm:text-5xl`.
+- [ ] Kecilkan judul card menjadi sekitar `text-xl sm:text-2xl`.
+- [ ] Gunakan body text card `text-sm sm:text-base`.
+- [ ] Kurangi padding card menjadi sekitar `p-4 sm:p-5`.
+- [ ] Ubah rasio thumbnail card menjadi lebih ringkas, sekitar `16/9`.
+- [ ] Gunakan shadow `4px 4px` untuk card dan komponen kecil.
+- [ ] Pertahankan border tebal sebagai karakter utama brutalism.
+
+### Target Revisi Detail Studi Kasus
+
+- [ ] Kecilkan judul hero studi kasus menjadi sekitar `text-4xl sm:text-6xl lg:text-7xl`.
+- [ ] Kecilkan heading section menjadi sekitar `text-2xl sm:text-4xl`.
+- [ ] Gunakan body text utama `text-base`, dengan `text-lg` hanya untuk bagian penting.
+- [ ] Kurangi jarak antar-section dari `mt-16` menjadi sekitar `mt-12`.
+- [ ] Ringkas padding metadata dan kartu fitur.
+- [ ] Gunakan `border-2` dan `shadow-brutal-sm` pada kartu fitur.
+- [ ] Pertahankan galeri besar, tetapi kurangi penggunaan shadow yang berat.
+- [ ] Verifikasi kepadatan layout pada viewport 320px, 375px, 768px, dan desktop.
+
+### Skala Visual Target
+
+- Judul halaman: 32–48px.
+- Judul studi kasus: 36–72px.
+- Heading section: 24–40px.
+- Judul card: 20–28px.
+- Body text: 14–18px.
+- Label metadata: 11–13px.
+- Border 2px untuk komponen kecil dan 4px untuk container utama.
+- Shadow 4px untuk card dan 8px hanya untuk hero utama.
 ## Aturan Workflow Mockup
 
 - Sebelum mengimplementasikan perubahan UI/UX, buat dan tampilkan mockup atau wireframe terlebih dahulu.
@@ -338,3 +375,9 @@ Sebelum mengerjakan task:
 - `npm.cmd run lint` berhasil.
 - `npm.cmd run build` berhasil.
 - Uji manual browser desktop/mobile dan keyboard masih perlu dilakukan.
+### 2026-08-04 — Evaluasi Skala UI Proyek
+
+- Menemukan bahwa card proyek dan tipografi detail studi kasus terlalu besar.
+- Menetapkan revisi menuju layout portfolio yang lebih padat.
+- Mempertahankan karakter brutalism melalui border, warna, dan shadow yang lebih terukur.
+- Menetapkan mockup revisi sebagai langkah wajib sebelum perubahan class UI.
