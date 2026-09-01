@@ -28,7 +28,7 @@ function Header() {
               {item.label}
             </NavLink>
           ))}
-          <a className="ml-2 border-2 border-foreground bg-secondary px-4 py-2 font-mono text-sm font-bold uppercase shadow-brutal-sm transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none" href="mailto:habibregi6@gmail.com">
+          <a className="ml-2 border-2 border-foreground bg-secondary px-4 py-2 font-mono text-sm font-bold uppercase shadow-brutal-sm transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none" href="mailto:regialhabib622@gmail.com">
             Kontak ↗
           </a>
         </nav>
@@ -46,7 +46,7 @@ function Header() {
                 {item.label}
               </NavLink>
             ))}
-            <a className="border-2 border-foreground bg-secondary px-4 py-3 font-mono font-bold uppercase" href="mailto:habibregi6@gmail.com" onClick={closeMenu}>
+            <a className="border-2 border-foreground bg-secondary px-4 py-3 font-mono font-bold uppercase" href="mailto:regialhabib622@gmail.com" onClick={closeMenu}>
               Kontak ↗
             </a>
           </div>

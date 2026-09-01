@@ -9,21 +9,21 @@ function ProfileSidebar({ isMobileOpen, onMobileClose }) {
   const profileContent = (
     <>
       <div className="border-b-4 border-foreground pb-6">
-        <div className="mx-auto mb-5 aspect-square w-40 overflow-hidden border-4 border-foreground bg-secondary sm:w-48 lg:w-48">
-          <img className="h-full w-full object-cover" src={getAssetUrl(profile.profileImage.src)} alt={profile.profileImage.alt} />
+        <div className="mx-auto mb-4 aspect-square w-32 overflow-hidden border-4 border-foreground bg-secondary sm:w-40 lg:w-[clamp(7rem,20vh,10rem)]">
+          <img className="h-full w-full object-cover" loading="lazy" decoding="async" src={getAssetUrl(profile.profileImage.src)} alt={profile.profileImage.alt} />
         </div>
         <h1 className="text-3xl font-black uppercase leading-none">{profile.name}</h1>
         <p className="mt-2 font-mono text-sm font-bold uppercase">{profile.role}</p>
       </div>
 
-      <div className="space-y-5 py-6 font-mono text-xs font-bold uppercase">
+      <div className="space-y-4 py-5 font-mono text-xs font-bold uppercase">
         <a className="flex items-start gap-3 underline decoration-2 underline-offset-4" href={`mailto:${profile.email}`}><Mail aria-hidden="true" size={17} /><span>Email<br />{profile.email}</span></a>
         <a className="flex items-start gap-3 underline decoration-2 underline-offset-4" href={profile.whatsapp.url} target="_blank" rel="noreferrer"><MessageCircle aria-hidden="true" size={17} /><span>WhatsApp<br />{profile.whatsapp.label}</span></a>
         <p className="flex items-start gap-3"><MapPin aria-hidden="true" size={17} /><span>Lokasi<br />{profile.location}</span></p>
       </div>
 
       <div className="border-t-4 border-foreground pt-5">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-3">
           <SocialButton brand="linkedin" href={profile.social.linkedin} label="LinkedIn Regi Al Habib" />
           <SocialButton brand="github" href={profile.social.github} label="GitHub Regi Al Habib" />
         </div>
@@ -36,7 +36,7 @@ function ProfileSidebar({ isMobileOpen, onMobileClose }) {
 
   return (
     <>
-      <aside className="hidden w-[300px] shrink-0 border-r-4 border-foreground bg-card p-6 lg:sticky lg:top-0 lg:block lg:h-dvh lg:overflow-y-auto"><div className="mb-6 border-b-4 border-foreground pb-4 font-mono text-xl font-black uppercase tracking-tight">Regialhabib<span className="text-accent">.</span></div>{profileContent}</aside>
+      <aside className="hidden w-[300px] shrink-0 border-r-4 border-foreground bg-card p-5 lg:sticky lg:top-0 lg:block lg:h-dvh lg:overflow-hidden"><div className="mb-5 border-b-4 border-foreground pb-3 font-mono text-xl font-black uppercase tracking-tight">Regialhabib<span className="text-accent">.</span></div>{profileContent}</aside>
       <AnimatePresence>
         {isMobileOpen && (
           <>
