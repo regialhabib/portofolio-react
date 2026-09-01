@@ -1,6 +1,5 @@
 import { motion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
 
 import { getAssetUrl } from '@/lib/assetUrl'
 
@@ -15,7 +14,7 @@ function ProjectCard({ project, index }) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.35, delay: index * 0.06 }}
     >
-      <Link className="flex h-full flex-col" to={`/proyek/${project.slug}`}>
+      <div className="flex h-full flex-col">
         <div className="aspect-video overflow-hidden border-b-4 border-foreground bg-secondary">
           <img
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -31,11 +30,11 @@ function ProjectCard({ project, index }) {
           </div>
           <h3 className="mt-4 text-xl font-black uppercase leading-none sm:text-2xl">{project.title}</h3>
           <p className="mt-3 flex-1 text-sm font-medium leading-relaxed sm:text-base">{project.summary}</p>
-          <span className="mt-5 inline-flex items-center gap-2 font-mono text-sm font-bold uppercase underline decoration-2 underline-offset-4">
-            Baca studi kasus <ArrowUpRight aria-hidden="true" size={18} />
-          </span>
+          <a className="mt-5 inline-flex items-center gap-2 font-mono text-sm font-bold uppercase underline decoration-2 underline-offset-4" href={project.github} target="_blank" rel="noreferrer">
+            Lihat di GitHub <ArrowUpRight aria-hidden="true" size={18} />
+          </a>
         </div>
-      </Link>
+      </div>
     </motion.article>
   )
 }

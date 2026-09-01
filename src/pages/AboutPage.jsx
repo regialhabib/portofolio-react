@@ -16,8 +16,8 @@ function AboutPage() {
         <div className="flex items-end justify-between gap-4 border-b-4 border-foreground pb-3">
           <h3 id="skills-title" className="font-mono text-sm font-bold uppercase">Skill</h3>
         </div>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {profile.skills.map((skill, index) => <div key={skill} className={`border-2 border-foreground p-5 font-mono text-sm font-bold uppercase shadow-brutal-sm ${index % 3 === 1 ? 'bg-secondary' : index % 3 === 2 ? 'bg-accent' : 'bg-card'}`}>{skill}</div>)}
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+          {profile.skills.map((skill, index) => <div key={skill} className={`border-2 border-foreground p-5 font-mono text-sm font-bold uppercase shadow-brutal-sm ${index % 2 === 0 ? 'bg-secondary' : 'bg-card'} ${index % 3 === 0 ? 'lg:bg-card' : index % 3 === 1 ? 'lg:bg-secondary' : 'lg:bg-accent'}`}>{skill}</div>)}
         </div>
       </section>
     </motion.article>

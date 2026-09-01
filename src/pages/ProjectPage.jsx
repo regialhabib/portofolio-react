@@ -7,7 +7,7 @@ import { getAssetUrl } from '@/lib/assetUrl'
 
 const accentClasses = {
   'pengajuan-cuti': 'bg-secondary',
-  koperasi: 'bg-accent',
+  'sanggar-seni-majelis-adat': 'bg-accent',
   puskesmas: 'bg-secondary',
   'booking-rumah': 'bg-accent',
 }

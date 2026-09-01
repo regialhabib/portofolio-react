@@ -36,7 +36,7 @@ function ProfileSidebar({ isMobileOpen, onMobileClose }) {
 
   return (
     <>
-      <aside className="hidden w-[300px] shrink-0 border-r-4 border-foreground bg-card p-5 lg:sticky lg:top-0 lg:block lg:h-dvh lg:overflow-hidden"><div className="mb-5 border-b-4 border-foreground pb-3 font-mono text-xl font-black uppercase tracking-tight">Regialhabib<span className="text-accent">.</span></div>{profileContent}</aside>
+      <aside className="hidden w-[300px] shrink-0 border-r-4 border-foreground bg-card p-5 lg:sticky lg:top-0 lg:block lg:h-dvh lg:overflow-y-auto"><div className="mb-5 border-b-4 border-foreground pb-3 font-mono text-xl font-black uppercase tracking-tight">Regialhabib<span className="text-accent">.</span></div>{profileContent}</aside>
       <AnimatePresence>
         {isMobileOpen && (
           <>

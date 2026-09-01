@@ -35,7 +35,7 @@ function HomePage() {
       <section id="proyek" className="mx-auto max-w-7xl px-6 py-16 sm:px-10 sm:py-24 lg:px-12">
         <SectionHeading eyebrow="Karya pilihan" title="Sistem yang bekerja untuk manusia dan data." description="Beberapa sistem informasi berbasis web yang saya kembangkan sebagai freelance web developer." />
         <div className="grid gap-8 md:grid-cols-2">
-          {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
+          {projects.filter((project) => project.visible !== false).map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
         </div>
         <div className="mt-10 flex justify-end">
           <Link className="inline-flex items-center gap-2 border-2 border-foreground bg-secondary px-4 py-3 font-mono text-sm font-bold uppercase shadow-brutal-sm transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none" to="/portfolio">

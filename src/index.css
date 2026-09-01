@@ -65,8 +65,9 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--ring);
+  outline: 3px solid var(--foreground);
   outline-offset: 4px;
+  box-shadow: 0 0 0 6px var(--secondary);
 }
 .skip-link {
   position: fixed;
@@ -97,6 +98,7 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+    transition-property: color, background-color, border-color, box-shadow, opacity !important;
     transition-duration: 0.01ms !important;
   }
 }

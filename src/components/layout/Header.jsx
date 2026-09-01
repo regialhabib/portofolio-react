@@ -3,8 +3,8 @@ import { Menu, X } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 const navigation = [
-  { label: 'Beranda', to: '/' },
-  { label: 'Portofolio', to: '/portfolio' },
+  { label: 'Tentang', to: '/tentang' },
+  { label: 'Proyek', to: '/proyek' },
 ]
 
 function Header() {

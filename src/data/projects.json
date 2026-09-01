@@ -4,6 +4,7 @@
         "title":  "Sistem Pengajuan Cuti",
         "category":  "Sistem informasi berbasis web",
         "role":  "Freelance",
+        "github":  "https://github.com/regialhabib/pengajuan-cuti",
         "summary":  "Sistem berbasis web untuk mendukung proses pengajuan dan pengelolaan cuti secara lebih terstruktur.",
         "overview":  "Sistem informasi berbasis web untuk mengelola alur pengajuan dan persetujuan cuti karyawan secara terstruktur pada organisasi multi-departemen, dengan hierarki persetujuan berjenjang sesuai struktur jabatan masing-masing departemen.",
         "focus":  "Pengembangan sistem informasi",
@@ -43,46 +44,32 @@
                    }
     },
     {
-        "slug":  "koperasi",
-        "title":  "Sistem Koperasi Simpan Pinjam",
-        "category":  "Sistem informasi berbasis web",
+        "slug":  "sanggar-seni-majelis-adat",
+        "title":  "Website Profil dan CMS Sanggar Seni Majelis Adat",
+        "category":  "Website profil dan CMS",
         "role":  "Freelance",
-        "summary":  "Sistem informasi untuk mendukung kebutuhan operasional koperasi simpan pinjam.",
-        "overview":  "Sistem informasi berbasis web untuk mengelola operasional koperasi simpan pinjam, mencakup pengelolaan simpanan dan pinjaman anggota, validasi pembayaran tagihan, hingga pelaporan untuk pengambilan keputusan.",
-        "focus":  "Pengembangan sistem informasi",
+        "github":  "https://github.com/regialhabib/sanggar-seni-majelis-adat",
+        "summary":  "Website profil sanggar seni dengan CMS admin untuk mengelola konten kegiatan dan galeri secara terstruktur.",
+        "overview":  "Website profil dan CMS Sanggar Seni Majelis Adat yang mencakup halaman Beranda, Profil, Kegiatan, Detail Kegiatan, dan Galeri yang terhubung dengan database MySQL.",
+        "focus":  "Pengembangan website profil dan CMS",
         "status":  "Portofolio proyek",
         "features":  [
-                         "Role-based access control dengan tiga peran: Kepala Koperasi, Admin, dan User (anggota), masing-masing dengan akses berbeda.",
-                         "Modul simpanan dan pinjaman untuk user, termasuk pengajuan pinjaman dan setoran simpanan.",
-                         "Validasi pembayaran tagihan oleh admin untuk memastikan pembayaran anggota sesuai sebelum diproses.",
-                         "Dashboard dan laporan untuk kepala koperasi, memberikan gambaran kondisi keuangan dan aktivitas koperasi secara keseluruhan.",
-                         "Pengelolaan data simpanan dan pinjaman anggota secara terpusat oleh admin."
+                         "Membangun CMS admin dengan autentikasi, layout responsive, serta fitur CRUD untuk mengelola konten website, kategori kegiatan, dan kategori galeri.",
+                         "Mengimplementasikan editor WYSIWYG Quill, pembuatan slug otomatis, ringkasan kegiatan maksimal 50 kata, validasi input, sanitasi HTML, serta upload gambar ke Laravel public storage.",
+                         "Menambahkan fitur pencarian, sorting, pagination menggunakan DataTables, filter kategori, preview gambar melalui lightbox, sitemap XML, dan pengujian fitur menggunakan PHPUnit."
                      ],
-        "challenge":  "Tantangan utama proyek ini adalah merancang struktur data yang mampu melacak riwayat transaksi simpanan dan pinjaman setiap anggota secara akurat, termasuk status tagihan dan validasi pembayaran, sehingga data yang ditampilkan di dashboard dan laporan kepala koperasi selalu mencerminkan kondisi terkini. Perhitungan saldo simpanan maupun sisa pinjaman perlu konsisten meski terjadi banyak transaksi dari berbagai anggota secara bersamaan.",
+        "challenge":  "Tantangan utama proyek ini adalah menghubungkan kebutuhan website profil publik dengan CMS admin yang mudah dikelola, sekaligus menjaga validasi input, sanitasi HTML, dan struktur konten tetap konsisten. Sistem juga perlu menangani upload gambar, filter kategori, serta ringkasan kegiatan yang terukur tanpa mengurangi fleksibilitas pengelolaan konten.",
         "technologies":  [
+                             "Laravel",
                              "PHP",
                              "MySQL",
-                             "HTML",
-                             "CSS",
+                             "Tailwind CSS",
                              "JavaScript"
                          ],
         "assets":  {
-                       "thumbnail":  "projects/koperasi/thumbnail.png",
-                       "thumbnailAlt":  "Tampilan aplikasi sistem koperasi simpan pinjam",
-                       "gallery":  [
-                                       {
-                                           "src":  "projects/koperasi/image-1.png",
-                                           "alt":  "Tampilan antarmuka sistem koperasi simpan pinjam"
-                                       },
-                                       {
-                                           "src":  "projects/koperasi/image-2.png",
-                                           "alt":  "Tampilan antarmuka sistem koperasi simpan pinjam"
-                                       },
-                                       {
-                                           "src":  "projects/koperasi/image-3.png",
-                                           "alt":  "Tampilan antarmuka sistem koperasi simpan pinjam"
-                                       }
-                                   ]
+                       "thumbnail":  "projects/sanggar-seni-majelis-adat/thumbnail.png",
+                       "thumbnailAlt":  "Tampilan website profil Sanggar Seni Majelis Adat",
+                       "gallery":  []
                    }
     },
     {
@@ -90,6 +77,7 @@
         "title":  "Sistem Pelayanan Puskesmas",
         "category":  "Sistem informasi berbasis web",
         "role":  "Freelance",
+        "github":  "https://github.com/regialhabib/pelayanan-puskesmas",
         "summary":  "Sistem berbasis web untuk membantu kebutuhan pelayanan dan pengelolaan informasi puskesmas.",
         "overview":  "Sistem informasi berbasis web untuk mengelola alur pelayanan kesehatan di puskesmas, mencakup proses pemeriksaan pasien oleh dokter, peresepan obat, hingga pengelolaan data master oleh admin.",
         "focus":  "Pengembangan sistem informasi",
@@ -129,6 +117,7 @@
     },
     {
         "slug":  "booking-rumah",
+        "visible":  false,
         "title":  "Sistem Booking Rumah",
         "category":  "Sistem informasi berbasis web",
         "role":  "Freelance",
@@ -170,6 +159,35 @@
                                            "alt":  "Tampilan antarmuka sistem booking rumah"
                                        }
                                    ]
+                   }
+    },
+    {
+        "slug":  "pemetaan-pelanggan-monitoring",
+        "title":  "Sistem Pemetaan Pelanggan dan Monitoring Kunjungan",
+        "category":  "Sistem informasi berbasis web",
+        "role":  "Freelance",
+        "github":  "https://github.com/regialhabib/PemetaanPelangganPLN",
+        "summary":  "Sistem pemetaan pelanggan PLN untuk membantu penugasan dan monitoring kunjungan petugas secara lebih efektif.",
+        "overview":  "Sistem pemetaan pelanggan PLN berbasis web yang menampilkan lokasi pelanggan menggunakan marker pada peta dan membantu petugas mengelola daftar serta rute kunjungan.",
+        "focus":  "Pemetaan dan monitoring kunjungan",
+        "status":  "Portofolio proyek",
+        "features":  [
+                         "Menampilkan lokasi pelanggan PLN menggunakan marker pada peta melalui OpenLayers.",
+                         "Mengimplementasikan fitur penugasan dan monitoring kunjungan petugas berdasarkan daftar pelanggan yang harus dikunjungi.",
+                         "Mengintegrasikan OSRM untuk menentukan rute kunjungan berdasarkan koordinat lokasi petugas dan pelanggan.",
+                         "Menampilkan rute dan rekomendasi urutan kunjungan pada peta untuk membantu petugas menentukan perjalanan yang lebih efektif."
+                     ],
+        "challenge":  "Mengintegrasikan data lokasi pelanggan, koordinat petugas, dan rute kunjungan ke dalam satu tampilan peta agar penugasan serta monitoring perjalanan dapat dilakukan secara lebih terarah.",
+        "technologies":  [
+                             "Laravel",
+                             "MySQL",
+                             "OpenLayers",
+                             "OSRM"
+                         ],
+        "assets":  {
+                       "thumbnail":  "projects/pemetaan-pelanggan-monitoring/thumbnail.jpg",
+                       "thumbnailAlt":  "Peta lokasi pelanggan dan rute kunjungan petugas",
+                       "gallery":  []
                    }
     }
 ]
