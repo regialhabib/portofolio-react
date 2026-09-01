@@ -8,7 +8,7 @@ Aplikasi ini merupakan hasil migrasi bertahap dari situs statis HTML, CSS, dan J
 
 - Workspace portfolio dengan sidebar profil dan navigasi tab.
 - Halaman Tentang, Resume, Proyek, dan Kontak.
-- Empat studi kasus dengan route dinamis.
+- Empat proyek aktif dengan route dinamis.
 - Data profil, resume, dan proyek disimpan dalam file JSON.
 - Galeri gambar proyek dengan metadata `alt`.
 - Drawer profil dan kontak pada tampilan mobile.
@@ -25,7 +25,7 @@ Aplikasi ini merupakan hasil migrasi bertahap dari situs statis HTML, CSS, dan J
 | `/` | Mengarah ke workspace portfolio pada tab Tentang |
 | `/tentang` | Profil dan skill |
 | `/resume` | Pendidikan dan pengalaman |
-| `/proyek` | Daftar empat proyek |
+| `/proyek` | Daftar proyek aktif |
 | `/proyek/:slug` | Detail studi kasus dinamis |
 | `/kontak` | Informasi kontak dan sosial |
 | `/portfolio` | Route kompatibilitas menuju `/tentang` |
@@ -78,7 +78,6 @@ portofolio-react/
 │   ├── pages/              # Halaman route aplikasi
 │   ├── App.jsx
 │   └── index.css
-├── TASK.md                 # Rencana, keputusan, dan status migrasi
 └── package.json
 ```
 
@@ -88,11 +87,11 @@ portofolio-react/
 - `src/data/resume.json` berisi pendidikan dan pengalaman.
 - `src/data/projects.json` berisi seluruh konten studi kasus dan referensi gambar.
 - Gambar proyek berada di `src/assets/projects/<slug>/`.
-- Resume tersedia di `public/resume-regi-al-habib.pdf`.
+- Resume tersedia di `public/Regi_Al_Habib.pdf`.
 
 ## Workflow Pengembangan
 
-Migrasi dilakukan bertahap dan dicatat di [TASK.md](./TASK.md). Perubahan UI/UX besar harus diawali mockup atau wireframe yang direview sebelum implementasi.
+Perubahan UI/UX besar harus diawali mockup atau wireframe yang direview sebelum implementasi.
 
 Sebelum membuat commit, jalankan:
 
