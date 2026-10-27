@@ -2,7 +2,7 @@
 
 Portofolio pribadi berbasis React.js untuk menampilkan profil, resume, skill, kontak, dan studi kasus proyek sistem informasi berbasis web.
 
-Desain "Skema": portofolio disajikan seperti skema database (ERD) — profil sebagai entitas `developer`, proyek sebagai baris tabel dengan masalah, solusi, dan alur sistemnya. Font Bricolage Grotesque dan IBM Plex Mono.
+Desain gelap personal: latar hampir hitam dengan aksen lime, sapaan hero dengan foto di kartu miring, dan kartu proyek ringkas. Beranda menampilkan maksimal 6 proyek; daftar lengkap ada di `/proyek`. Font Sora (judul) dan DM Sans (isi).
 
 ## Fitur
 
@@ -65,7 +65,8 @@ portofolio-react/
 │   ├── assets/             # Foto profil dan gambar proyek
 │   ├── components/
 │   │   ├── layout/         # Header, footer, dan layout situs
-│   │   ├── schema/         # Komponen bergaya ERD: entitas, alur, masalah/solusi
+│   │   ├── common/         # Judul section, link dalam teks, hiasan zig-zag
+│   │   ├── project/        # Kartu proyek, alur, dan galeri studi kasus
 │   │   └── sections/       # Section halaman utama
 │   ├── data/               # profile.json, resume.json, projects.json
 │   ├── lib/                # Utility, helper proyek, dan resolver aset

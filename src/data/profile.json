@@ -13,11 +13,17 @@
                          "alt":  "Foto formal Regi Al Habib"
                      },
     "hero":  {
-                 "eyebrow":  "portofolio · fullstack web developer · laravel & php",
-                 "title":  "Saya merancang databasenya dulu, baru membangun sistemnya.",
-                 "highlight":  "baru",
-                 "description":  "Sistem informasi yang rapi dimulai dari struktur data yang benar. Selama 1+ tahun freelance, saya membawa 4+ sistem dari analisis kebutuhan dan ERD sampai serah terima — dengan Laravel, PHP, dan MySQL."
+                 "greeting":  "Halo, nama saya",
+                 "nickname":  "Regi",
+                 "headline":  "Fullstack Web Developer yang merancang databasenya dulu, baru membangun sistemnya.",
+                 "description":  "Selama 1+ tahun freelance, saya membawa 4+ sistem informasi dari analisis kebutuhan dan [desain database](#keahlian) sampai serah terima, dengan [Laravel, PHP, dan MySQL](#keahlian). Penasaran hasilnya? [Lihat karya saya](#karya).",
+                 "statement":  {
+                                   "eyebrow":  "Saya membantu mengubah alur kerja yang rumit",
+                                   "title":  "Menjadi sistem yang rapi dan mudah dipakai",
+                                   "cta":  "Lihat hasil kerja saya"
+                               }
              },
+    "experienceYears":  "1+",
     "about":  {
                   "title":  "Teknologi seharusnya membuat pekerjaan yang rumit terasa lebih terstruktur.",
                   "description":  "Web Developer dengan 1+ tahun pengalaman freelance mengembangkan 4+ sistem informasi berbasis web untuk mendukung proyek tugas akhir klien mahasiswa IT. Berpengalaman menggunakan Laravel, PHP, dan MySQL dalam menganalisis kebutuhan, merancang database dan ERD, mengembangkan fitur, serta melakukan testing dan debugging. Memiliki pengalaman tambahan dalam data cleansing dan normalisasi data menggunakan Microsoft Excel melalui magang di Diskominfo Provinsi Jambi."

@@ -1,21 +1,16 @@
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Link, useParams } from 'react-router-dom'
 
-import { Entity } from '@/components/schema/Entity'
-import { FlowSteps } from '@/components/schema/FlowSteps'
-import { Gallery } from '@/components/schema/Gallery'
-import { ProblemSolution } from '@/components/schema/ProblemSolution'
+import { FlowSteps } from '@/components/project/FlowSteps'
+import { Gallery } from '@/components/project/Gallery'
+import profile from '@/data/profile.json'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { getAssetUrl } from '@/lib/assetUrl'
-import { formatProjectNumber, projects, toIdentifier, visibleProjects } from '@/lib/projects'
+import { formatProjectNumber, projects, visibleProjects } from '@/lib/projects'
 
-function SectionTitle({ id, label, children }) {
-  return (
-    <div className="mb-5">
-      <p className="font-mono text-xs text-muted">-- {label}</p>
-      <h2 id={id} className="mt-1 text-2xl leading-tight font-extrabold tracking-[-0.02em] sm:text-3xl">{children}</h2>
-    </div>
-  )
+function SectionTitle({ id, children }) {
+  return <h2 id={id} className="mb-6 text-2xl leading-tight font-semibold sm:text-[28px]">{children}</h2>
 }
 
 function ProjectPage() {
@@ -28,100 +23,116 @@ function ProjectPage() {
   const previousProject = visibleIndex > 0 ? visibleProjects[visibleIndex - 1] : null
   const nextProject = visibleIndex >= 0 ? visibleProjects[visibleIndex + 1] : null
   const metaRows = [
-    ['kategori', project.category],
-    ['fokus', project.focus],
-    ['peran', `${project.role} Web Developer`],
-    ['status', project.status],
+    ['Kategori', project.category],
+    ['Fokus', project.focus],
+    ['Peran', `${project.role} Web Developer`],
+    ['Status', project.status],
   ]
+  const summaryRows = [
+    ['Masalah', project.problem],
+    ['Solusi', project.solution],
+  ].filter(([, text]) => text)
 
   return (
-    <motion.article className="mx-auto max-w-[1160px] px-6 pt-8 pb-16" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-      <nav className="flex flex-wrap items-center gap-2 font-mono text-sm" aria-label="Breadcrumb">
-        <Link className="py-2 underline underline-offset-4 hover:text-accent" to="/#proyek">← semua proyek</Link>
-        <span aria-hidden="true" className="text-muted">/</span>
-        <span aria-current="page" className="text-muted">{toIdentifier(project.slug)}</span>
-      </nav>
+    <motion.article className="mx-auto max-w-[1120px] px-6 pt-8 pb-20" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
+      <Link className="inline-flex items-center gap-1 py-3 text-[15px] text-body transition-colors hover:text-accent" to="/#karya">
+        <ChevronLeft aria-hidden="true" size={18} />
+        Semua karya
+      </Link>
 
-      <header className="mt-6 flex flex-wrap items-start gap-8">
-        <div className="flex min-w-0 flex-[999_1_520px] flex-col gap-4">
-          <p className="font-mono text-[13px] text-muted">-- studi kasus · {project.role.toLowerCase()}</p>
-          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-[-0.03em] text-balance sm:text-5xl">{project.title}</h1>
-          <p className="max-w-[620px] text-base leading-relaxed text-pretty text-body sm:text-lg">{project.overview}</p>
+      <header className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+        <div className="min-w-0">
+          <p className="flex items-center gap-3 text-sm font-medium text-accent">
+            <span aria-hidden="true" className="h-px w-8 bg-accent" />
+            Studi kasus {visibleIndex >= 0 && formatProjectNumber(visibleIndex)}
+          </p>
+          <h1 className="mt-3 text-[32px] leading-tight font-semibold text-balance sm:text-[44px]">{project.title}</h1>
+          <p className="mt-5 max-w-[640px] text-base leading-[1.85] text-pretty text-body sm:text-[17px]">{project.overview}</p>
         </div>
-        <Entity name="proyek" meta={visibleIndex >= 0 ? formatProjectNumber(visibleIndex) : null} className="min-w-0 flex-[1_1_320px]">
-          <dl className="font-mono text-[13px]">
-            {metaRows.map(([field, value]) => (
-              <div key={field} className="grid grid-cols-[96px_minmax(0,1fr)] gap-3 border-b border-line px-4 py-2.5">
-                <dt className="text-muted">{field}</dt>
-                <dd>{value}</dd>
-              </div>
-            ))}
-            {project.github && (
-              <div className="grid grid-cols-[96px_minmax(0,1fr)] gap-3 px-4 py-2.5">
-                <dt className="text-muted">github</dt>
-                <dd><a className="font-semibold text-accent underline-offset-4 hover:underline" href={project.github} target="_blank" rel="noreferrer">lihat repositori ↗</a></dd>
-              </div>
-            )}
-          </dl>
-        </Entity>
+        <dl className="self-start rounded-2xl border border-line bg-surface px-5 py-2 text-[15px]">
+          {metaRows.map(([field, value]) => (
+            <div key={field} className="border-b border-line py-3">
+              <dt className="text-sm text-muted">{field}</dt>
+              <dd className="mt-0.5">{value}</dd>
+            </div>
+          ))}
+          {project.github && (
+            <div className="py-3">
+              <dt className="text-sm text-muted">GitHub</dt>
+              <dd><a className="inline-flex items-center gap-1 py-1 font-medium text-accent underline underline-offset-4 hover:opacity-80" href={project.github} target="_blank" rel="noreferrer">Lihat repositori<ArrowUpRight aria-hidden="true" size={16} /></a></dd>
+            </div>
+          )}
+        </dl>
       </header>
 
-      <Entity as="figure" name={`${toIdentifier(project.slug)}.thumbnail`} className="mt-8">
-        <img className="block h-auto w-full bg-placeholder" src={getAssetUrl(project.assets.thumbnail)} alt={project.assets.thumbnailAlt} decoding="async" />
-      </Entity>
+      <figure className="mt-12 overflow-hidden rounded-2xl border border-line bg-surface p-3">
+        <img className="block h-auto w-full rounded-lg" src={getAssetUrl(project.assets.thumbnail)} alt={project.assets.thumbnailAlt} decoding="async" />
+      </figure>
 
-      <section className="mt-12 grid gap-6 lg:grid-cols-2" aria-labelledby="ringkasan-title">
-        <div>
-          <SectionTitle id="ringkasan-title" label="ringkasan">Masalah &amp; solusi</SectionTitle>
-          <ProblemSolution project={project} />
+      <section className="mt-16" aria-labelledby="ringkasan-title">
+        <SectionTitle id="ringkasan-title">Masalah &amp; solusi</SectionTitle>
+        <div className="grid gap-6 md:grid-cols-2">
+          {summaryRows.map(([label, text]) => (
+            <div key={label} className="rounded-2xl border border-line bg-surface p-6">
+              <h3 className="text-sm font-medium text-accent">{label}</h3>
+              <p className="mt-2 text-base leading-relaxed text-pretty">{text}</p>
+            </div>
+          ))}
         </div>
-        <div className="self-end border-[1.5px] border-foreground bg-card p-5">
-          <FlowSteps flow={project.flow} />
-        </div>
+        {project.flow && <div className="mt-6 rounded-2xl border border-line p-6"><FlowSteps flow={project.flow} /></div>}
       </section>
 
-      <section className="mt-12" aria-labelledby="fitur-title">
-        <SectionTitle id="fitur-title" label="fitur">Fitur utama</SectionTitle>
-        <Entity name="fitur" meta={`${project.features.length} baris`}>
-          <ol>
-            {project.features.map((feature, index) => (
-              <li key={feature} className="grid grid-cols-[44px_minmax(0,1fr)] gap-3 border-b border-line px-4 py-3 text-[15px] leading-relaxed last:border-b-0">
-                <span className="font-mono text-[13px] font-semibold text-accent">{String(index + 1).padStart(2, '0')}</span>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ol>
-        </Entity>
+      <section className="mt-16" aria-labelledby="fitur-title">
+        <SectionTitle id="fitur-title">Fitur utama</SectionTitle>
+        <ol className="grid gap-x-10 md:grid-cols-2">
+          {project.features.map((feature, index) => (
+            <li key={feature} className="flex gap-4 border-b border-line py-4 text-[15px] leading-relaxed">
+              <span className="font-display text-sm font-semibold text-accent">{formatProjectNumber(index)}</span>
+              <span className="text-body">{feature}</span>
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <section className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]" aria-labelledby="tantangan-title">
+      <section className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16" aria-labelledby="tantangan-title">
         <div>
-          <SectionTitle id="tantangan-title" label="proses">Tantangan teknis</SectionTitle>
-          <p className="text-base leading-relaxed text-pretty text-body">{project.challenge}</p>
+          <SectionTitle id="tantangan-title">Tantangan teknis</SectionTitle>
+          <p className="text-base leading-[1.85] text-pretty text-body">{project.challenge}</p>
         </div>
-        <Entity name="teknologi" meta={`${project.technologies.length} baris`} className="self-start">
-          <ul className="font-mono text-[13px]">
-            {project.technologies.map((technology) => <li key={technology} className="border-b border-line px-4 py-2 last:border-b-0">{technology}</li>)}
+        <div>
+          <h2 className="mb-4 text-sm font-medium text-accent">Teknologi</h2>
+          <ul className="flex flex-wrap gap-2">
+            {project.technologies.map((technology) => <li key={technology} className="rounded-full border border-line px-3 py-1 text-sm text-body">{technology}</li>)}
           </ul>
-        </Entity>
+        </div>
       </section>
 
       {project.assets.gallery.length > 0 && (
-        <section className="mt-12" aria-labelledby="galeri-title">
-          <SectionTitle id="galeri-title" label="visual">Galeri</SectionTitle>
+        <section className="mt-16" aria-labelledby="galeri-title">
+          <SectionTitle id="galeri-title">Galeri</SectionTitle>
           <Gallery images={project.assets.gallery} />
         </section>
       )}
 
-      <nav className="mt-14 grid gap-4 border-t-[1.5px] border-foreground pt-6 font-mono text-[13px] sm:grid-cols-2" aria-label="Navigasi studi kasus">
+      <aside className="mt-16 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-line bg-surface px-6 py-8 sm:px-10">
+        <div>
+          <p className="text-lg font-semibold">Butuh sistem serupa?</p>
+          <p className="mt-1 text-[15px] text-body">Ceritakan kebutuhannya, saya bantu dari database sampai serah terima.</p>
+        </div>
+        <a className="rounded-full bg-accent px-6 py-3 font-semibold text-on-accent transition-opacity hover:opacity-85" href={`mailto:${profile.email}`}>Hubungi saya</a>
+      </aside>
+
+      <nav className="mt-10 grid gap-4 sm:grid-cols-2" aria-label="Navigasi studi kasus">
         {previousProject ? (
-          <Link className="border-[1.5px] border-foreground bg-card p-4 transition-colors hover:bg-foreground hover:text-white" to={`/proyek/${previousProject.slug}`}>
-            <span className="text-muted">← sebelumnya</span><br /><strong className="font-semibold">{previousProject.title}</strong>
+          <Link className="group rounded-2xl border border-line p-5 transition-colors hover:border-accent/50" to={`/proyek/${previousProject.slug}`}>
+            <span className="inline-flex items-center gap-1 text-sm text-muted"><ChevronLeft aria-hidden="true" size={16} />Sebelumnya</span>
+            <strong className="mt-1 block font-semibold group-hover:text-accent">{previousProject.title}</strong>
           </Link>
         ) : <span />}
         {nextProject && (
-          <Link className="border-[1.5px] border-foreground bg-card p-4 text-right transition-colors hover:bg-foreground hover:text-white" to={`/proyek/${nextProject.slug}`}>
-            <span className="text-muted">berikutnya →</span><br /><strong className="font-semibold">{nextProject.title}</strong>
+          <Link className="group rounded-2xl border border-line p-5 text-right transition-colors hover:border-accent/50" to={`/proyek/${nextProject.slug}`}>
+            <span className="inline-flex items-center gap-1 text-sm text-muted">Berikutnya<ChevronRight aria-hidden="true" size={16} /></span>
+            <strong className="mt-1 block font-semibold group-hover:text-accent">{nextProject.title}</strong>
           </Link>
         )}
       </nav>

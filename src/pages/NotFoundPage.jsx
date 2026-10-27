@@ -1,19 +1,22 @@
+import { ChevronLeft } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
-import { Entity } from '@/components/schema/Entity'
+import { Squiggle } from '@/components/common/Squiggle'
 
 function NotFoundPage() {
   const { pathname } = useLocation()
 
   return (
-    <section className="mx-auto flex min-h-[70vh] max-w-[1160px] items-center px-6 py-16">
-      <Entity name="error" meta="404" className="w-full">
-        <div className="flex flex-col gap-6 p-6 sm:p-10">
-          <p className="font-mono text-sm break-all text-muted">SELECT * FROM halaman WHERE url = '{pathname}'; -- 0 baris</p>
-          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-[-0.03em] sm:text-5xl">Halaman tidak ditemukan.</h1>
-          <Link className="self-start bg-foreground px-4 py-3 font-mono text-sm text-white transition-colors hover:bg-accent" to="/">← kembali ke beranda</Link>
-        </div>
-      </Entity>
+    <section className="relative mx-auto flex min-h-[70vh] max-w-[1120px] flex-col items-center justify-center px-6 py-20 text-center">
+      <Squiggle className="top-16 left-[15%] text-coral" />
+      <Squiggle variant="zigzag" className="right-[15%] bottom-20 text-teal" />
+      <p className="font-display text-7xl font-bold text-accent sm:text-8xl">404</p>
+      <h1 className="mt-4 text-2xl font-semibold sm:text-3xl">Halaman tidak ditemukan</h1>
+      <p className="mt-3 max-w-[460px] text-base break-all text-body">Alamat <span className="text-foreground">{pathname}</span> tidak ada di portofolio ini.</p>
+      <Link className="mt-8 inline-flex items-center gap-1 py-2 font-medium text-accent underline underline-offset-4 hover:opacity-80" to="/">
+        <ChevronLeft aria-hidden="true" size={18} />
+        Kembali ke beranda
+      </Link>
     </section>
   )
 }

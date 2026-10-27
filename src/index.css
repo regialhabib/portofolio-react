@@ -1,42 +1,43 @@
 @import "tailwindcss";
-@import "@fontsource-variable/bricolage-grotesque";
-@import "@fontsource/ibm-plex-mono/400.css";
-@import "@fontsource/ibm-plex-mono/500.css";
-@import "@fontsource/ibm-plex-mono/600.css";
+@import "@fontsource-variable/sora";
+@import "@fontsource-variable/dm-sans";
 
 @theme inline {
-  --font-sans: 'Bricolage Grotesque Variable', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-sans: 'DM Sans Variable', system-ui, sans-serif;
+  --font-display: 'Sora Variable', 'DM Sans Variable', system-ui, sans-serif;
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
   --color-body: var(--body);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-accent: var(--accent);
-  --color-ink-muted: var(--ink-muted);
-  --color-ink-line: var(--ink-line);
-  --color-success: var(--success);
-  --color-placeholder: var(--placeholder);
+  --color-on-accent: var(--on-accent);
+  --color-teal: var(--teal);
+  --color-coral: var(--coral);
+  --color-violet: var(--violet);
 }
 
 :root {
-  --background: #eef1f5;
-  --foreground: #13213c;
-  --card: #ffffff;
-  --body: #2c3a55;
-  --muted: #46536b;
-  --line: #d5dbe5;
-  --accent: #c43a12;
-  --ink-muted: #9fb0cc;
-  --ink-line: #3a4c6e;
-  --success: #0b6b4a;
-  --placeholder: #dfe5ee;
+  color-scheme: dark;
+  --background: #0f1216;
+  --surface: #161a20;
+  --surface-2: #1e232b;
+  --foreground: #f3f4f6;
+  --body: #c3c8d0;
+  --muted: #8b929d;
+  --line: #272c35;
+  --accent: #d4f53c;
+  --on-accent: #13160a;
+  --teal: #2dd4bf;
+  --coral: #ff7a59;
+  --violet: #8b6cf6;
 }
 
 * {
   box-sizing: border-box;
-  border-color: var(--foreground);
+  border-color: var(--line);
 }
 
 html {
@@ -51,15 +52,22 @@ body {
   margin: 0;
   overflow-x: hidden;
   background-color: var(--background);
-  background-image:
-    linear-gradient(rgb(19 33 60 / 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(19 33 60 / 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
 }
 
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 :focus-visible {
@@ -73,15 +81,43 @@ a {
   left: 1rem;
   z-index: 50;
   transform: translateY(-200%);
-  background: var(--foreground);
-  color: #ffffff;
+  border-radius: 0.5rem;
+  background: var(--accent);
+  color: var(--on-accent);
   padding: 0.75rem 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+/* Kartu foto hero: sudut membulat dengan sisi atas yang miring naik ke kanan. */
+.photo-shape {
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 14C0 10.7 2.5 8.3 5.8 8L94 .5C97.3.2 100 2.7 100 6V94c0 3.3-2.7 6-6 6H6c-3.3 0-6-2.7-6-6Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 14C0 10.7 2.5 8.3 5.8 8L94 .5C97.3.2 100 2.7 100 6V94c0 3.3-2.7 6-6 6H6c-3.3 0-6-2.7-6-6Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.wave {
+  transform-origin: 70% 75%;
+  animation: wave 2.2s ease-in-out 0.6s 2;
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.float-badge {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
