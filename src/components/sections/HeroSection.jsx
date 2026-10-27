@@ -19,11 +19,19 @@ const badges = [
 ]
 
 function HeroPhoto() {
+  const { profileImage } = profile
+  const imageUrl = getAssetUrl(profileImage.src)
+
   return (
     <motion.figure className="relative mx-auto w-full max-w-[300px] sm:max-w-[330px]" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}>
       <div className="relative aspect-[4/5]">
         <div aria-hidden="true" className="photo-shape absolute inset-0 bg-accent" />
-        <img className="photo-shape absolute inset-3 size-[calc(100%-1.5rem)] object-cover object-[center_20%]" src={getAssetUrl(profile.profileImage.src)} alt={profile.profileImage.alt} decoding="async" />
+        {/* Foto tanpa latar (PNG transparan) berdiri di atas kartu dan kepalanya menyembul keluar; foto biasa dipotong mengikuti bentuk kartu. */}
+        {profileImage.cutout ? (
+          <img className="absolute bottom-0 left-1/2 h-[112%] w-auto max-w-none -translate-x-1/2" src={imageUrl} alt={profileImage.alt} decoding="async" />
+        ) : (
+          <img className="photo-shape absolute inset-3 size-[calc(100%-1.5rem)] object-cover object-[center_20%]" src={imageUrl} alt={profileImage.alt} decoding="async" />
+        )}
       </div>
       {badges.map((badge) => (
         <span key={badge.label} aria-hidden="true" title={badge.label} className={`float-badge absolute flex size-13 items-center justify-center rounded-full border border-line bg-surface text-accent shadow-lg shadow-black/40 ${badge.className}`}>

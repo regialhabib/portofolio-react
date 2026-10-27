@@ -9,8 +9,9 @@
                  },
     "availability":  "Terbuka untuk peluang",
     "profileImage":  {
-                         "src":  "profile/foto-formal.webp",
-                         "alt":  "Foto formal Regi Al Habib"
+                         "src":  "profile/foto-regi.webp",
+                         "alt":  "Foto Regi Al Habib mengenakan kemeja kotak-kotak",
+                         "cutout":  true
                      },
     "hero":  {
                  "greeting":  "Halo, nama saya",
