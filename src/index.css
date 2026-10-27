@@ -1,52 +1,46 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
-
-@custom-variant dark (&:is(.dark *));
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-mono/600.css";
 
 @theme inline {
-  --font-sans: 'Geist Variable', sans-serif;
-  --font-mono: 'Courier New', monospace;
+  --font-sans: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
   --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-border: var(--border);
-  --color-ring: var(--ring);
-  --shadow-brutal: 8px 8px 0 var(--foreground);
-  --shadow-brutal-sm: 4px 4px 0 var(--foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-line: var(--ink-line);
+  --color-success: var(--success);
+  --color-placeholder: var(--placeholder);
 }
 
 :root {
-  --background: #f5f0e8;
-  --foreground: #171717;
-  --card: #fffdf8;
-  --card-foreground: #171717;
-  --primary: #171717;
-  --primary-foreground: #f5f0e8;
-  --secondary: #d7f171;
-  --secondary-foreground: #171717;
-  --accent: #ff7043;
-  --accent-foreground: #171717;
-  --border: #171717;
-  --ring: #ff7043;
-  --radius: 0;
+  --background: #eef1f5;
+  --foreground: #13213c;
+  --card: #ffffff;
+  --body: #2c3a55;
+  --muted: #46536b;
+  --line: #d5dbe5;
+  --accent: #c43a12;
+  --ink-muted: #9fb0cc;
+  --ink-line: #3a4c6e;
+  --success: #0b6b4a;
+  --placeholder: #dfe5ee;
 }
 
 * {
   box-sizing: border-box;
-  border-color: var(--border);
+  border-color: var(--foreground);
 }
 
 html {
-  font-family: 'Geist Variable', sans-serif;
+  font-family: var(--font-sans);
   background: var(--background);
   color: var(--foreground);
   scroll-behavior: smooth;
@@ -56,7 +50,11 @@ body {
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
-  background: var(--background);
+  background-color: var(--background);
+  background-image:
+    linear-gradient(rgb(19 33 60 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(19 33 60 / 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 button,
@@ -65,28 +63,27 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--foreground);
-  outline-offset: 4px;
-  box-shadow: 0 0 0 6px var(--secondary);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
+
 .skip-link {
   position: fixed;
   top: 1rem;
   left: 1rem;
   z-index: 50;
   transform: translateY(-200%);
-  border: 2px solid var(--foreground);
-  background: var(--secondary);
+  background: var(--foreground);
+  color: #ffffff;
   padding: 0.75rem 1rem;
-  font-family: 'Courier New', monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
 }
 
 .skip-link:focus {
   transform: translateY(0);
 }
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -98,7 +95,6 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
-    transition-property: color, background-color, border-color, box-shadow, opacity !important;
     transition-duration: 0.01ms !important;
   }
 }

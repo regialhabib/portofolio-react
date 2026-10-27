@@ -2,33 +2,29 @@
 
 Portofolio pribadi berbasis React.js untuk menampilkan profil, resume, skill, kontak, dan studi kasus proyek sistem informasi berbasis web.
 
-Aplikasi ini merupakan hasil migrasi bertahap dari situs statis HTML, CSS, dan JavaScript ke React dengan pendekatan component-based, data JSON, dan visual brutalism terstruktur.
+Desain "Skema": portofolio disajikan seperti skema database (ERD) — profil sebagai entitas `developer`, proyek sebagai baris tabel dengan masalah, solusi, dan alur sistemnya. Font Bricolage Grotesque dan IBM Plex Mono.
 
 ## Fitur
 
-- Workspace portfolio dengan sidebar profil dan navigasi tab.
-- Halaman Tentang, Resume, Proyek, dan Kontak.
-- Empat proyek aktif dengan route dinamis.
+- Satu halaman scroll: hero, proyek, keahlian, riwayat, kontak.
+- Setiap proyek menampilkan masalah, solusi, dan diagram alur singkat.
+- Halaman studi kasus dinamis per proyek dengan navigasi sebelumnya/berikutnya.
 - Data profil, resume, dan proyek disimpan dalam file JSON.
 - Galeri gambar proyek dengan metadata `alt`.
-- Drawer profil dan kontak pada tampilan mobile.
 - Tautan email, WhatsApp, LinkedIn, dan GitHub.
 - Download resume dalam format PDF.
 - Responsive layout desktop dan mobile.
-- Animasi ringan menggunakan Motion.
+- Animasi ringan menggunakan Motion (menghormati `prefers-reduced-motion`).
 - Fallback 404 untuk route dan slug proyek yang tidak ditemukan.
 
 ## Route
 
 | Route | Keterangan |
 | --- | --- |
-| `/` | Mengarah ke workspace portfolio pada tab Tentang |
-| `/tentang` | Profil dan skill |
-| `/resume` | Pendidikan dan pengalaman |
-| `/proyek` | Daftar proyek aktif |
+| `/` | Halaman utama (hero, proyek, keahlian, riwayat, kontak) |
 | `/proyek/:slug` | Detail studi kasus dinamis |
-| `/kontak` | Informasi kontak dan sosial |
-| `/portfolio` | Route kompatibilitas menuju `/tentang` |
+| `/proyek`, `/resume`, `/kontak` | Kompatibilitas, diarahkan ke section `/#proyek`, `/#riwayat`, `/#kontak` |
+| `/tentang`, `/portfolio` | Kompatibilitas, diarahkan ke `/` |
 
 ## Teknologi
 
@@ -36,7 +32,6 @@ Aplikasi ini merupakan hasil migrasi bertahap dari situs statis HTML, CSS, dan J
 - Vite
 - React Router
 - Tailwind CSS
-- shadcn/ui dan Base UI
 - Motion
 - Lucide React
 - ESLint
@@ -69,12 +64,11 @@ portofolio-react/
 ├── src/
 │   ├── assets/             # Foto profil dan gambar proyek
 │   ├── components/
-│   │   ├── landing/        # Komponen kartu dan heading proyek
-│   │   ├── layout/         # Layout umum situs
-│   │   ├── portfolio/      # Layout workspace, sidebar, tab, dan studi kasus
-│   │   └── ui/             # Komponen UI dari shadcn/ui
+│   │   ├── layout/         # Header, footer, dan layout situs
+│   │   ├── schema/         # Komponen bergaya ERD: entitas, alur, masalah/solusi
+│   │   └── sections/       # Section halaman utama
 │   ├── data/               # profile.json, resume.json, projects.json
-│   ├── lib/                # Utility dan resolver aset
+│   ├── lib/                # Utility, helper proyek, dan resolver aset
 │   ├── pages/              # Halaman route aplikasi
 │   ├── App.jsx
 │   └── index.css
@@ -85,7 +79,7 @@ portofolio-react/
 
 - `src/data/profile.json` berisi identitas, kontak, sosial media, skill, dan informasi resume.
 - `src/data/resume.json` berisi pendidikan dan pengalaman.
-- `src/data/projects.json` berisi seluruh konten studi kasus dan referensi gambar.
+- `src/data/projects.json` berisi seluruh konten studi kasus dan referensi gambar. Field `problem`, `solution`, dan `flow` (`label` + `steps`) dipakai untuk ringkasan proyek; set `visible: false` untuk menyembunyikan proyek dari daftar.
 - Gambar proyek berada di `src/assets/projects/<slug>/`.
 - Resume tersedia di `public/Regi_Al_Habib.pdf`.
 

@@ -1,13 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+
+import { Entity } from '@/components/schema/Entity'
 
 function NotFoundPage() {
+  const { pathname } = useLocation()
+
   return (
-    <section className="mx-auto flex min-h-[70vh] max-w-7xl items-center px-6 py-16 sm:px-10 lg:px-12">
-      <div className="w-full border-4 border-foreground bg-accent p-6 shadow-brutal sm:p-10">
-        <p className="font-mono text-sm font-bold uppercase">404 · Halaman tidak ditemukan</p>
-        <h1 className="mt-5 text-5xl font-black uppercase leading-[0.9] sm:text-7xl">Salah alamat.</h1>
-        <Link className="mt-8 inline-block border-2 border-foreground bg-secondary px-4 py-3 font-mono font-bold uppercase" to="/">Kembali ke beranda</Link>
-      </div>
+    <section className="mx-auto flex min-h-[70vh] max-w-[1160px] items-center px-6 py-16">
+      <Entity name="error" meta="404" className="w-full">
+        <div className="flex flex-col gap-6 p-6 sm:p-10">
+          <p className="font-mono text-sm break-all text-muted">SELECT * FROM halaman WHERE url = '{pathname}'; -- 0 baris</p>
+          <h1 className="text-5xl leading-[0.98] font-extrabold tracking-[-0.035em] sm:text-7xl">Halaman tidak ditemukan.</h1>
+          <Link className="self-start bg-foreground px-5 py-4 font-mono text-[15px] text-white transition-colors hover:bg-accent" to="/">← kembali ke beranda</Link>
+        </div>
+      </Entity>
     </section>
   )
 }

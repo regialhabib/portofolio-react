@@ -2,11 +2,10 @@ import profile from '@/data/profile.json'
 
 function Footer() {
   return (
-    <footer className="border-t-4 border-foreground bg-foreground px-6 py-6 text-background sm:px-10 lg:px-12">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 font-mono text-xs font-bold uppercase sm:flex-row sm:items-center sm:justify-between">
-        <span>© 2026 Regi Al Habib</span>
-        <a className="underline decoration-2 underline-offset-4" href={`mailto:${profile.email}`}>{profile.email}</a>
-        <a className="underline decoration-2 underline-offset-4" href="#main-content">Kembali ke atas ↑</a>
+    <footer className="border-t border-ink-line bg-foreground text-ink-muted">
+      <div className="mx-auto flex max-w-[1160px] flex-wrap justify-between gap-2 px-6 py-5 font-mono text-[13px]">
+        <span>© 2026 regi_al_habib</span>
+        <span>{profile.location.toLowerCase()}</span>
       </div>
     </footer>
   )

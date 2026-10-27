@@ -1,57 +1,30 @@
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const navigation = [
-  { label: 'Tentang', to: '/tentang' },
-  { label: 'Proyek', to: '/proyek' },
+import profile from '@/data/profile.json'
+
+const navItems = [
+  { label: 'proyek', to: '/#proyek' },
+  { label: 'keahlian', to: '/#keahlian' },
+  { label: 'riwayat', to: '/#riwayat' },
+  { label: 'kontak', to: '/#kontak' },
 ]
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const closeMenu = () => setIsOpen(false)
-
   return (
-    <header className="border-b-4 border-foreground bg-background">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-5 sm:px-10 lg:px-12">
-        <NavLink className="font-mono text-lg font-black uppercase tracking-tight" to="/" onClick={closeMenu} aria-label="Regi Al Habib, kembali ke beranda">
-          RAH<span className="text-accent">.</span>
-        </NavLink>
-
-        <nav className="hidden items-center gap-2 md:flex" aria-label="Navigasi utama">
-          {navigation.map((item) => (
-            <NavLink
-              key={item.to}
-              className={({ isActive }) => `border-2 border-transparent px-4 py-2 font-mono text-sm font-bold uppercase transition-[background-color,transform] hover:border-foreground hover:bg-secondary hover:shadow-brutal-sm ${isActive ? 'bg-accent' : ''}`}
-              to={item.to}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-          <a className="ml-2 border-2 border-foreground bg-secondary px-4 py-2 font-mono text-sm font-bold uppercase shadow-brutal-sm transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none" href="mailto:regialhabib622@gmail.com">
-            Kontak ↗
-          </a>
-        </nav>
-
-        <button className="border-2 border-foreground bg-accent p-2 md:hidden" type="button" aria-expanded={isOpen} aria-controls="mobile-navigation" aria-label={isOpen ? 'Tutup navigasi' : 'Buka navigasi'} onClick={() => setIsOpen((open) => !open)}>
-          {isOpen ? <X aria-hidden="true" size={22} /> : <Menu aria-hidden="true" size={22} />}
-        </button>
-      </div>
-
-      {isOpen && (
-        <nav id="mobile-navigation" className="border-t-4 border-foreground px-6 py-4 sm:px-10 md:hidden" aria-label="Navigasi mobile">
-          <div className="flex flex-col gap-3">
-            {navigation.map((item) => (
-              <NavLink key={item.to} className={({ isActive }) => `border-2 border-foreground px-4 py-3 font-mono font-bold uppercase ${isActive ? 'bg-accent' : 'bg-card'}`} to={item.to} onClick={closeMenu}>
-                {item.label}
-              </NavLink>
+    <header className="z-20 border-b-[1.5px] border-foreground bg-background sm:sticky sm:top-0">
+      <div className="mx-auto flex max-w-[1160px] flex-wrap items-center justify-between gap-x-3 px-6 py-2 font-mono text-sm">
+        <Link className="py-3 font-semibold" to="/">regi_al_habib<span className="text-accent">.sql</span></Link>
+        <a className="order-2 bg-foreground px-4 py-3 text-white transition-colors hover:bg-accent sm:order-3" href={profile.resume.file} download={profile.resume.downloadName}>unduh_cv.pdf</a>
+        <nav className="order-3 -mx-3 w-full overflow-x-auto sm:order-2 sm:mx-0 sm:ml-auto sm:w-auto" aria-label="Navigasi utama">
+          <ul className="flex min-w-max">
+            {navItems.map((item) => (
+              <li key={item.to}>
+                <Link className="block px-3 py-3 underline-offset-4 hover:text-accent hover:underline" to={item.to}>{item.label}</Link>
+              </li>
             ))}
-            <a className="border-2 border-foreground bg-secondary px-4 py-3 font-mono font-bold uppercase" href="mailto:regialhabib622@gmail.com" onClick={closeMenu}>
-              Kontak ↗
-            </a>
-          </div>
+          </ul>
         </nav>
-      )}
+      </div>
     </header>
   )
 }

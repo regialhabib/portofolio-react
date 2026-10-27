@@ -13,9 +13,10 @@
                          "alt":  "Foto formal Regi Al Habib"
                      },
     "hero":  {
-                 "eyebrow":  "Fullstack Web Developer · Laravel & PHP",
-                 "title":  "Membangun sistem web yang rapi, fungsional, dan berbasis data.",
-                 "description":  "Web developer dengan 1+ tahun pengalaman freelance mengembangkan sistem informasi berbasis web menggunakan Laravel, PHP, dan MySQL."
+                 "eyebrow":  "portofolio · fullstack web developer · laravel & php",
+                 "title":  "Saya merancang databasenya dulu, baru membangun sistemnya.",
+                 "highlight":  "baru",
+                 "description":  "Sistem informasi yang rapi dimulai dari struktur data yang benar. Selama 1+ tahun freelance, saya membawa 4+ sistem dari analisis kebutuhan dan ERD sampai serah terima — dengan Laravel, PHP, dan MySQL."
              },
     "about":  {
                   "title":  "Teknologi seharusnya membuat pekerjaan yang rumit terasa lebih terstruktur.",

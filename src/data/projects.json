@@ -9,6 +9,12 @@
         "overview":  "Sistem informasi berbasis web untuk mengelola alur pengajuan dan persetujuan cuti karyawan secara terstruktur pada organisasi multi-departemen, dengan hierarki persetujuan berjenjang sesuai struktur jabatan masing-masing departemen.",
         "focus":  "Pengembangan sistem informasi",
         "status":  "Portofolio proyek",
+        "problem":  "Siapa yang harus menyetujui cuti berbeda-beda, tergantung posisi pengaju dalam hierarki departemen.",
+        "solution":  "Approver ditentukan otomatis; empat peran dengan hak akses dan tampilan masing-masing.",
+        "flow":  {
+                     "label":  "alur persetujuan",
+                     "steps":  ["Karyawan", "Kasi", "Manager"]
+                 },
         "features":  [
                          "Role-based access control dengan empat peran: Admin, Manager, Kasi, dan Karyawan, masing-masing dengan hak akses dan tampilan berbeda.",
                          "Alur persetujuan cuti berjenjang otomatis mengikuti struktur organisasi: pengajuan karyawan → kasi → manager; pengajuan kasi langsung ke manager departemen.",
@@ -53,6 +59,12 @@
         "overview":  "Website profil dan CMS Sanggar Seni Majelis Adat yang mencakup halaman Beranda, Profil, Kegiatan, Detail Kegiatan, dan Galeri yang terhubung dengan database MySQL.",
         "focus":  "Pengembangan website profil dan CMS",
         "status":  "Portofolio proyek",
+        "problem":  "Pengelola sanggar perlu memperbarui kegiatan dan galeri tanpa menyentuh kode.",
+        "solution":  "CMS dengan editor WYSIWYG, upload gambar, validasi dan sanitasi input, diuji dengan PHPUnit.",
+        "flow":  {
+                     "label":  "alur konten",
+                     "steps":  ["Admin CMS", "Kegiatan & galeri", "Website publik"]
+                 },
         "features":  [
                          "Membangun CMS admin dengan autentikasi, layout responsive, serta fitur CRUD untuk mengelola konten website, kategori kegiatan, dan kategori galeri.",
                          "Mengimplementasikan editor WYSIWYG Quill, pembuatan slug otomatis, ringkasan kegiatan maksimal 50 kata, validasi input, sanitasi HTML, serta upload gambar ke Laravel public storage.",
@@ -82,6 +94,12 @@
         "overview":  "Sistem informasi berbasis web untuk mengelola alur pelayanan kesehatan di puskesmas, mencakup proses pemeriksaan pasien oleh dokter, peresepan obat, hingga pengelolaan data master oleh admin.",
         "focus":  "Pengembangan sistem informasi",
         "status":  "Portofolio proyek",
+        "problem":  "Data pasien, dokter, poli, tindakan, obat, dan resep saling terkait dan mudah tercecer.",
+        "solution":  "Database relasional dengan modul terpisah untuk Admin, Dokter, dan Pasien.",
+        "flow":  {
+                     "label":  "alur pelayanan",
+                     "steps":  ["Pasien", "Pemeriksaan dokter", "Resep obat"]
+                 },
         "features":  [
                          "Role-based access control dengan tiga peran: Admin, Dokter, dan Pasien, masing-masing dengan akses dan tampilan sesuai kebutuhan.",
                          "Modul pemeriksaan pasien untuk dokter, termasuk pencatatan hasil pemeriksaan dan peresepan obat.",
@@ -125,6 +143,12 @@
         "overview":  "Sistem informasi berbasis web untuk mengelola proses booking unit rumah pada perumahan, mencakup alur pemesanan oleh customer, pembayaran, hingga validasi transaksi oleh admin.",
         "focus":  "Pengembangan sistem informasi",
         "status":  "Portofolio proyek",
+        "problem":  "Status booking, bukti bayar, dan kwitansi harus selalu tertaut ke transaksi yang benar.",
+        "solution":  "Alur status transaksi yang konsisten dengan validasi admin, kwitansi otomatis, dan arsip terpusat.",
+        "flow":  {
+                     "label":  "alur transaksi",
+                     "steps":  ["Booking", "Upload bukti bayar", "Validasi admin", "Kwitansi"]
+                 },
         "features":  [
                          "Role-based access control dengan dua peran: Admin dan Customer, masing-masing dengan hak akses berbeda.",
                          "Modul booking rumah untuk customer, termasuk upload bukti transfer sebagai bagian dari proses pembayaran.",
@@ -171,6 +195,12 @@
         "overview":  "Sistem pemetaan pelanggan PLN berbasis web yang menampilkan lokasi pelanggan menggunakan marker pada peta dan membantu petugas mengelola daftar serta rute kunjungan.",
         "focus":  "Pemetaan dan monitoring kunjungan",
         "status":  "Portofolio proyek",
+        "problem":  "Lokasi pelanggan PLN, posisi petugas, dan rute kunjungan sulit dipantau secara terarah.",
+        "solution":  "Satu peta: marker pelanggan, penugasan petugas, dan rekomendasi urutan kunjungan.",
+        "flow":  {
+                     "label":  "alur data",
+                     "steps":  ["Koordinat", "OpenLayers", "OSRM", "Rute petugas"]
+                 },
         "features":  [
                          "Menampilkan lokasi pelanggan PLN menggunakan marker pada peta melalui OpenLayers.",
                          "Mengimplementasikan fitur penugasan dan monitoring kunjungan petugas berdasarkan daftar pelanggan yang harus dikunjungi.",
