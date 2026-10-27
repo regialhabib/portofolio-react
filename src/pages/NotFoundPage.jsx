@@ -10,8 +10,8 @@ function NotFoundPage() {
       <Entity name="error" meta="404" className="w-full">
         <div className="flex flex-col gap-6 p-6 sm:p-10">
           <p className="font-mono text-sm break-all text-muted">SELECT * FROM halaman WHERE url = '{pathname}'; -- 0 baris</p>
-          <h1 className="text-5xl leading-[0.98] font-extrabold tracking-[-0.035em] sm:text-7xl">Halaman tidak ditemukan.</h1>
-          <Link className="self-start bg-foreground px-5 py-4 font-mono text-[15px] text-white transition-colors hover:bg-accent" to="/">← kembali ke beranda</Link>
+          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-[-0.03em] sm:text-5xl">Halaman tidak ditemukan.</h1>
+          <Link className="self-start bg-foreground px-4 py-3 font-mono text-sm text-white transition-colors hover:bg-accent" to="/">← kembali ke beranda</Link>
         </div>
       </Entity>
     </section>
