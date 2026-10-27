@@ -35,10 +35,6 @@
                        "thumbnailAlt":  "Tampilan aplikasi sistem pengajuan cuti",
                        "gallery":  [
                                        {
-                                           "src":  "projects/pengajuan-cuti/image-1.png",
-                                           "alt":  "Tampilan antarmuka sistem pengajuan cuti"
-                                       },
-                                       {
                                            "src":  "projects/pengajuan-cuti/image-2.png",
                                            "alt":  "Tampilan antarmuka sistem pengajuan cuti"
                                        },

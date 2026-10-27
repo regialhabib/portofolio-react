@@ -45,16 +45,16 @@ function HeroSection() {
       </div>
 
       <Entity as="figure" name="developer" meta="1 baris" className="m-0 min-w-0 flex-[1_1_360px]">
-        <img className="block h-72 w-full border-b-[1.5px] border-foreground object-cover object-[center_20%]" src={getAssetUrl(profile.profileImage.src)} alt={profile.profileImage.alt} decoding="async" />
+        <img className="block h-56 w-full sm:h-72 border-b-[1.5px] border-foreground object-cover object-[center_20%]" src={getAssetUrl(profile.profileImage.src)} alt={profile.profileImage.alt} decoding="async" />
         <dl className="font-mono text-sm">
           {developerRows.map((row) => (
-            <div key={row.field} className="grid grid-cols-[32px_110px_minmax(0,1fr)] border-b border-line px-4 py-2.5">
+            <div key={row.field} className="grid grid-cols-[24px_88px_minmax(0,1fr)] border-b sm:grid-cols-[32px_110px_minmax(0,1fr)] border-line px-4 py-2.5">
               <span className="font-semibold text-accent">{row.key}</span>
               <dt className="text-muted">{row.field}</dt>
               <dd>{row.value}</dd>
             </div>
           ))}
-          <div className="grid grid-cols-[32px_110px_minmax(0,1fr)] px-4 py-2.5">
+          <div className="grid grid-cols-[24px_88px_minmax(0,1fr)] px-4 py-2.5 sm:grid-cols-[32px_110px_minmax(0,1fr)]">
             <span />
             <dt className="text-muted">status</dt>
             <dd className="flex items-center gap-2 text-success"><span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-success" />{toIdentifier(profile.availability)}</dd>

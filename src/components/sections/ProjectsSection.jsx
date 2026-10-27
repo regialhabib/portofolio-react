@@ -28,8 +28,8 @@ function ProjectRow({ project, index }) {
     <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.35 }}>
       <Entity as="article" name={`proyek · ${toIdentifier(project.slug)}`} meta={formatProjectNumber(index)}>
         <div className="grid lg:grid-cols-2">
-          <Link className="block min-h-64 overflow-hidden border-b-[1.5px] border-foreground bg-placeholder sm:min-h-80 lg:border-r-[1.5px] lg:border-b-0" to={caseStudyUrl} tabIndex={-1} aria-hidden="true">
-            <img className="h-full w-full object-cover object-top-left transition-transform duration-500 hover:scale-[1.03]" src={getAssetUrl(project.assets.thumbnail)} alt="" loading="lazy" decoding="async" />
+          <Link className="group flex items-center overflow-hidden border-b-[1.5px] border-foreground bg-placeholder p-4 sm:p-6 lg:border-r-[1.5px] lg:border-b-0" to={caseStudyUrl} tabIndex={-1} aria-hidden="true">
+            <img className="block h-auto w-full border border-line bg-card transition-transform duration-500 group-hover:scale-[1.02]" src={getAssetUrl(project.assets.thumbnail)} alt="" loading="lazy" decoding="async" />
           </Link>
           <div className="flex min-w-0 flex-col gap-5 px-6 py-7 sm:px-8">
             <h3 className="text-[28px] leading-[1.05] font-extrabold tracking-[-0.02em] sm:text-[32px]">
@@ -37,7 +37,7 @@ function ProjectRow({ project, index }) {
             </h3>
             <ProblemSolution project={project} />
             <FlowSteps flow={project.flow} />
-            <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4 font-mono text-sm">
+            <div className="mt-auto flex flex-col items-start gap-1 border-t border-line pt-4 font-mono text-sm">
               <span className="text-muted">{project.technologies.map((technology) => technology.toLowerCase()).join(' · ')}</span>
               <Link className="py-2.5 font-semibold text-accent underline-offset-4 hover:underline" to={caseStudyUrl}>buka studi kasus →</Link>
             </div>

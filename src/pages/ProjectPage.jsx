@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 
 import { Entity } from '@/components/schema/Entity'
 import { FlowSteps } from '@/components/schema/FlowSteps'
+import { Gallery } from '@/components/schema/Gallery'
 import { ProblemSolution } from '@/components/schema/ProblemSolution'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { getAssetUrl } from '@/lib/assetUrl'
@@ -66,7 +67,7 @@ function ProjectPage() {
       </header>
 
       <Entity as="figure" name={`${toIdentifier(project.slug)}.thumbnail`} className="mt-10">
-        <img className="block max-h-[560px] w-full bg-placeholder object-cover object-top" src={getAssetUrl(project.assets.thumbnail)} alt={project.assets.thumbnailAlt} decoding="async" />
+        <img className="block h-auto w-full bg-placeholder" src={getAssetUrl(project.assets.thumbnail)} alt={project.assets.thumbnailAlt} decoding="async" />
       </Entity>
 
       <section className="mt-16 grid gap-7 lg:grid-cols-2" aria-labelledby="ringkasan-title">
@@ -108,13 +109,7 @@ function ProjectPage() {
       {project.assets.gallery.length > 0 && (
         <section className="mt-16" aria-labelledby="galeri-title">
           <SectionTitle id="galeri-title" label="visual">Galeri</SectionTitle>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {project.assets.gallery.map((image, index) => (
-              <figure key={image.src} className={`overflow-hidden border-[1.5px] border-foreground bg-placeholder ${index === 2 ? 'sm:col-span-2' : ''}`}>
-                <img className="block aspect-[16/10] w-full object-cover object-top" src={getAssetUrl(image.src)} alt={image.alt} loading="lazy" decoding="async" />
-              </figure>
-            ))}
-          </div>
+          <Gallery images={project.assets.gallery} />
         </section>
       )}
 

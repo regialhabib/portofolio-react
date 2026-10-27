@@ -22,10 +22,10 @@
   "technicalSkills": [
     "Backend: PHP, Laravel, REST API, Hapi.js, Node.js",
     "Frontend: HTML5, CSS3, JavaScript, React.js, Blade, Bootstrap, Tailwind CSS",
-    "Database: MySQL, Database Design, ERD, Data Normalization",
-    "Testing: PHPUnit, Debugging, Validation",
+    "Database: MySQL, Desain Database, ERD, Normalisasi Data",
+    "Testing: PHPUnit, Debugging, Validasi",
     "Tools: Git, GitHub",
-    "Other: OpenLayers, OSRM, DataTables, Quill, AWS Cloud Fundamentals"
+    "Lainnya: OpenLayers, OSRM, DataTables, Quill, AWS Cloud Fundamentals"
   ],
   "certifications": [
     "SQL 101: Belajar SQL dari Nol — NgulikData",
