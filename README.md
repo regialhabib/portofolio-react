@@ -1,98 +1,49 @@
 # Portofolio Regi Al Habib
 
-Portofolio pribadi berbasis React.js untuk menampilkan profil, resume, skill, kontak, dan studi kasus proyek sistem informasi berbasis web.
+Web portofolio dengan gaya **playful & berwarna**, dibangun dengan React (Vite), Tailwind CSS v4, dan Motion.
 
-Desain gelap personal: latar hampir hitam dengan aksen lime, sapaan hero dengan foto di kartu miring, dan kartu proyek ringkas. Beranda menampilkan maksimal 6 proyek; daftar lengkap ada di `/proyek`. Font Sora (judul) dan DM Sans (isi).
-
-## Fitur
-
-- Satu halaman scroll: hero, proyek, keahlian, riwayat, kontak.
-- Setiap proyek menampilkan masalah, solusi, dan diagram alur singkat.
-- Halaman studi kasus dinamis per proyek dengan navigasi sebelumnya/berikutnya.
-- Data profil, resume, dan proyek disimpan dalam file JSON.
-- Galeri gambar proyek dengan metadata `alt`.
-- Tautan email, WhatsApp, LinkedIn, dan GitHub.
-- Download resume dalam format PDF.
-- Responsive layout desktop dan mobile.
-- Animasi ringan menggunakan Motion (menghormati `prefers-reduced-motion`).
-- Fallback 404 untuk route dan slug proyek yang tidak ditemukan.
-
-## Route
-
-| Route | Keterangan |
-| --- | --- |
-| `/` | Halaman utama (hero, proyek, keahlian, riwayat, kontak) |
-| `/proyek/:slug` | Detail studi kasus dinamis |
-| `/proyek`, `/resume`, `/kontak` | Kompatibilitas, diarahkan ke section `/#proyek`, `/#riwayat`, `/#kontak` |
-| `/tentang`, `/portfolio` | Kompatibilitas, diarahkan ke `/` |
-
-## Teknologi
-
-- React 19
-- Vite
-- React Router
-- Tailwind CSS
-- Motion
-- Lucide React
-- ESLint
-
-## Menjalankan Proyek
-
-Pastikan Node.js dan npm sudah tersedia.
+## Menjalankan
 
 ```bash
 npm install
-npm run dev
+npm run dev       # server lokal di http://localhost:5173
+npm run build     # build produksi ke folder dist/
+npm run preview   # cek hasil build
+npm run lint      # cek kode dengan oxlint
 ```
 
-Aplikasi akan tersedia pada alamat yang ditampilkan oleh Vite, biasanya `http://localhost:5173`.
+## Mengganti isi
 
-## Script
+Semua konten ada di `src/data/`. Komponen tidak perlu disentuh untuk sekadar update isi.
 
-```bash
-npm run dev      # Menjalankan development server
-npm run build    # Membuat production build
-npm run preview  # Menjalankan preview production build
-npm run lint     # Menjalankan ESLint
+| File | Isi |
+|---|---|
+| `profile.js` | nama, email, headline, paragraf tentang, statistik, link sosial, foto |
+| `skills.js` | daftar skill di pita berjalan |
+| `experience.js` | riwayat kerja, magang, dan pendidikan |
+| `projects.js` | daftar project, screenshot, link demo & repo |
+
+- **Foto profil:** taruh file di `public/` (mis. `public/foto-profil.jpg`), lalu isi `photo: '/foto-profil.jpg'`.
+- **Screenshot project:** taruh di `public/projects/<id-project>/`, lalu daftarkan di `images: [{ src, caption }]`. Gambar pertama jadi sampul kartu. Tambahkan `portrait: true` untuk screenshot tampilan HP. Disarankan format `.webp` berukuran 1440×900.
+- **Warna (`tone`):** pilih `'pink'`, `'yellow'`, `'mint'`, atau `'blue'`.
+- **Link project** yang dikosongkan (`''`) otomatis tidak ditampilkan.
+
+## Struktur
+
+```
+src/
+  components/
+    ui/       Button, Card, Pill, Mark, Tag, Modal, SectionTitle, Container
+    layout/   Navbar, Footer
+    theme/    ThemeProvider, ThemeToggle (tema terang/gelap)
+    motion/   Reveal (animasi muncul saat di-scroll)
+    deco/     Blobs, TextRing, Marquee
+  sections/   Hero, About, Experience, Projects, Contact
+  data/       konten (lihat tabel di atas)
+  lib/        cn (gabung kelas), tones (peta warna), useActiveSection
+  index.css   design tokens (warna, font, bayangan, animasi)
 ```
 
-## Struktur Utama
+Warna untuk tema terang dan gelap diatur di `:root` dan `.dark` pada `src/index.css`.
 
-```text
-portofolio-react/
-├── public/                 # Favicon, icon sprite, dan file resume
-├── src/
-│   ├── assets/             # Foto profil dan gambar proyek
-│   ├── components/
-│   │   ├── layout/         # Header, footer, dan layout situs
-│   │   ├── common/         # Judul section, link dalam teks, hiasan zig-zag
-│   │   ├── project/        # Kartu proyek, alur, dan galeri studi kasus
-│   │   └── sections/       # Section halaman utama
-│   ├── data/               # profile.json, resume.json, projects.json
-│   ├── lib/                # Utility, helper proyek, dan resolver aset
-│   ├── pages/              # Halaman route aplikasi
-│   ├── App.jsx
-│   └── index.css
-└── package.json
-```
-
-## Data dan Aset
-
-- `src/data/profile.json` berisi identitas, kontak, sosial media, skill, dan informasi resume.
-- `src/data/resume.json` berisi pendidikan dan pengalaman.
-- `src/data/projects.json` berisi seluruh konten studi kasus dan referensi gambar. Field `problem`, `solution`, dan `flow` (`label` + `steps`) dipakai untuk ringkasan proyek; set `visible: false` untuk menyembunyikan proyek dari daftar.
-- Gambar proyek berada di `src/assets/projects/<slug>/`.
-- Resume tersedia di `public/Regi_Al_Habib.pdf`.
-
-## Workflow Pengembangan
-
-Perubahan UI/UX besar harus diawali mockup atau wireframe yang direview sebelum implementasi.
-
-Sebelum membuat commit, jalankan:
-
-```bash
-npm run lint
-npm run build
-```
-
-Implementasi HTML lama berada di root repository induk dan dipertahankan sebagai referensi. Aplikasi React aktif berada di folder ini.
+Mockup desain asli ada di `docs/mockups/`.

@@ -1,0 +1,213 @@
+<title>Mockup Terminal Dev</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: tiap section dibuka dengan "perintah" terminal; hero = jendela terminal; isi pakai idiom kode (git log, JSON, ls) */
+:root {
+  --bg: #EDEFF2;
+  --panel: #FFFFFF;
+  --fg: #1A1E24;
+  --muted: #5B6470;
+  --line: #D2D7DE;
+  --accent: #B05A00;
+  --key: #2F66D0;
+  --str: #1C7F4A;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A0C0F; --panel: #11151A; --fg: #D9DFE7; --muted: #7E8896; --line: #222932;
+    --accent: #F2B54C; --key: #7FA9FF; --str: #6FD39A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A0C0F; --panel: #11151A; --fg: #D9DFE7; --muted: #7E8896; --line: #222932;
+  --accent: #F2B54C; --key: #7FA9FF; --str: #6FD39A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 56px;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 22px 22px;
+  transition: background-color .3s, color .3s;
+}
+.wrap { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; font-family: var(--mono); text-wrap: balance; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.m { font-family: var(--mono); }
+.acc { color: var(--accent); } .key { color: var(--key); } .str { color: var(--str); } .dim { color: var(--muted); }
+
+header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 13px; }
+header .brand { font-weight: 700; text-decoration: none; }
+nav { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+nav a { text-decoration: none; color: var(--muted); padding: 4px 8px; border-radius: 6px; }
+nav a:hover { color: var(--fg); background: var(--panel); }
+nav a::before { content: "./"; color: var(--accent); }
+.toggle { font: 500 12px var(--mono); background: var(--panel); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+
+.term { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: 0 24px 60px -30px rgb(0 0 0 / .35); }
+.term .bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); font: 12px var(--mono); color: var(--muted); }
+.term .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--line); display: block; }
+.term .bar span { margin-left: auto; margin-right: auto; }
+.term .body { padding: 24px; font-family: var(--mono); font-size: 14px; display: flex; flex-direction: column; gap: 6px; overflow-x: auto; }
+.line { animation: show .4s both; }
+.line:nth-child(2) { animation-delay: .25s } .line:nth-child(3) { animation-delay: .5s } .line:nth-child(4) { animation-delay: .75s }
+.line:nth-child(5) { animation-delay: 1s } .line:nth-child(6) { animation-delay: 1.25s }
+@keyframes show { from { opacity: .15; transform: translateX(-6px) } to { opacity: 1; transform: none } }
+.prompt { color: var(--str); } .prompt b { color: var(--key); font-weight: 500; }
+.hero h1 { font-size: clamp(30px, 5.6vw, 58px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; margin-block: 10px; }
+.hero h1 .acc { display: inline; }
+.cursor { display: inline-block; width: .55em; height: 1em; background: var(--accent); vertical-align: -0.12em; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0 } }
+.hero .desc { font-family: var(--body); color: var(--muted); max-width: 58ch; font-size: 16px; }
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.btn { font: 500 13px var(--mono); text-decoration: none; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; transition: border-color .2s, transform .2s; }
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--panel); font-weight: 700; }
+
+.cmd { font: 500 14px var(--mono); color: var(--muted); margin-bottom: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+.cmd .p { color: var(--str); }
+.cmd .c { color: var(--fg); }
+section h2 { font-size: clamp(24px, 3.6vw, 34px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 18px; }
+
+.about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 20px; }
+.about .prose { display: flex; flex-direction: column; gap: 12px; color: var(--muted); max-width: 60ch; }
+.about .prose strong { color: var(--fg); font-weight: 600; }
+pre.json { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; font: 13.5px/1.7 var(--mono); overflow-x: auto; }
+
+.log { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 8px 20px; font-family: var(--mono); }
+.commit { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 14px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
+.commit:last-child { border-bottom: 0; }
+.commit .hash { color: var(--accent); font-size: 13px; padding-top: 2px; }
+.commit h3 { font-size: 15px; font-weight: 700; }
+.commit .when { font-size: 12px; color: var(--muted); }
+.commit p { font-family: var(--body); color: var(--muted); font-size: 14px; margin-top: 4px; max-width: 64ch; }
+.tag { font-size: 11px; color: var(--key); border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; margin-left: 6px; font-weight: 500; vertical-align: 1px; }
+
+.ls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.file { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; transition: border-color .2s, transform .2s; min-width: 0; }
+.file:hover { border-color: var(--accent); transform: translateY(-3px); }
+.file .perm { font: 12px var(--mono); color: var(--muted); }
+.file h3 { font-size: 20px; font-weight: 700; }
+.file h3::after { content: "/"; color: var(--accent); }
+.file p { color: var(--muted); font-size: 14px; }
+.file .stack { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; }
+.file .stack span { font: 12px var(--mono); background: var(--bg); border-radius: 4px; padding: 2px 8px; }
+
+form.cli { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 14px; font-family: var(--mono); }
+.field { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 10px; align-items: start; }
+.field label { color: var(--str); font-size: 14px; padding-top: 8px; }
+.field input, .field textarea { font: 14px var(--mono); background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; width: 100%; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+.formfoot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 13px; }
+.mailline { user-select: all; }
+#out { color: var(--str); font-size: 13px; }
+
+footer { font: 12px var(--mono); color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px dashed var(--line); padding-top: 16px; }
+
+@media (max-width: 760px) {
+  .about, .ls { grid-template-columns: minmax(0, 1fr); }
+  .field { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .field label { padding-top: 0; }
+  nav a { display: none; }
+  .term .body { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="#top"><span class="acc">~/</span>regial</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#about">about</a><a href="#experience">experience</a><a href="#projects">projects</a><a href="#contact">contact</a>
+      <button class="toggle" id="themeToggle" aria-label="Ganti tema terang/gelap">theme --toggle</button>
+    </nav>
+  </header>
+
+  <section class="hero term" id="top">
+    <div class="bar"><i></i><i></i><i></i><span>regial@portfolio: ~</span></div>
+    <div class="body">
+      <div class="line"><span class="prompt">regial@portfolio <b>~</b> $</span> whoami</div>
+      <div class="line"><h1>Regial Habib,<br><span class="acc">web developer</span>.</h1></div>
+      <div class="line"><p class="desc">Saya membangun antarmuka React yang cepat dan mudah dipakai, lalu merapikan kodenya supaya tim lain betah meneruskannya.</p></div>
+      <div class="line dim">→ Indonesia · WIB · status: <span class="str">open_to_freelance=true</span></div>
+      <div class="line ctas"><a class="btn primary" href="#projects">ls ./projects</a><a class="btn" href="#contact">mail --to regial</a></div>
+      <div class="line"><span class="prompt">regial@portfolio <b>~</b> $</span> <span class="cursor"></span></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="cmd"><span class="p">$</span><span class="c">cat about.md stack.json</span></div>
+    <h2>Tentang saya</h2>
+    <div class="about">
+      <div class="prose">
+        <p>Lulusan <strong>Teknik Informatika</strong> dengan <strong>2+ tahun</strong> pengalaman di frontend. Biasa memegang alur dari wireframe sampai deploy, dan nyaman kerja bareng desainer maupun backend.</p>
+        <p>Fokus saya: performa, aksesibilitas, dan komponen yang bisa dipakai ulang. Sudah menyelesaikan <strong>12 project</strong> untuk <strong>6 klien</strong>.</p>
+      </div>
+<pre class="json">{
+  <span class="key">"frontend"</span>: [<span class="str">"React"</span>, <span class="str">"JavaScript"</span>,
+               <span class="str">"Tailwind"</span>, <span class="str">"shadcn/ui"</span>],
+  <span class="key">"backend"</span>:  [<span class="str">"Node.js"</span>, <span class="str">"Express"</span>,
+               <span class="str">"PostgreSQL"</span>],
+  <span class="key">"tools"</span>:    [<span class="str">"Git"</span>, <span class="str">"Figma"</span>, <span class="str">"Vercel"</span>],
+  <span class="key">"ngopi"</span>:    <span class="acc">true</span>
+}</pre>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="cmd"><span class="p">$</span><span class="c">git log --career --oneline</span></div>
+    <h2>Pengalaman</h2>
+    <div class="log">
+      <div class="commit"><span class="hash">a3f9c21</span><div><h3>Frontend Developer @ PT Contoh Digital <span class="tag">HEAD</span></h3><span class="when">2024 — sekarang</span><p>Membangun dashboard internal dengan React dan shadcn/ui. Waktu muat halaman utama turun dari 4,1 s ke 1,6 s.</p></div></div>
+      <div class="commit"><span class="hash">7b2e0d4</span><div><h3>Web Developer Intern @ Studio Contoh</h3><span class="when">2023</span><p>Mengerjakan 5 landing page klien UMKM dan merapikan komponen UI bersama.</p></div></div>
+      <div class="commit"><span class="hash">1c08aa9</span><div><h3>S1 Teknik Informatika @ Universitas Contoh <span class="tag">init</span></h3><span class="when">2020 — 2024</span><p>Skripsi: sistem antrean online untuk puskesmas.</p></div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="cmd"><span class="p">$</span><span class="c">ls -l ./projects</span></div>
+    <h2>Project</h2>
+    <div class="ls">
+      <a class="file" href="#projects"><span class="perm">drwxr-xr-x · web-app · 2025</span><h3>kasirku</h3><p>Aplikasi kasir untuk UMKM: stok, transaksi, dan laporan harian.</p><div class="stack"><span>react</span><span>node</span><span>postgres</span></div></a>
+      <a class="file" href="#projects"><span class="perm">drwxr-xr-x · web-app · 2025</span><h3>laporin</h3><p>Aplikasi pengaduan warga dengan status laporan yang bisa dipantau.</p><div class="stack"><span>react</span><span>express</span></div></a>
+      <a class="file" href="#projects"><span class="perm">drwxr-xr-x · dashboard · 2024</span><h3>siakad-mini</h3><p>Dashboard nilai dan jadwal kuliah untuk mahasiswa.</p><div class="stack"><span>react</span><span>chart.js</span></div></a>
+      <a class="file" href="#projects"><span class="perm">drwxr-xr-x · landing · 2023</span><h3>jejak-rasa</h3><p>Landing page kuliner lokal dengan peta lokasi warung.</p><div class="stack"><span>vite</span><span>tailwind</span></div></a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="cmd"><span class="p">$</span><span class="c">./contact.sh</span></div>
+    <h2>Kirim pesan</h2>
+    <form class="cli" id="form">
+      <div class="field"><label for="nama">nama:</label><input id="nama" value="Budi Santoso"></div>
+      <div class="field"><label for="email">email:</label><input id="email" type="email" value="budi@contoh.com"></div>
+      <div class="field"><label for="pesan">pesan:</label><textarea id="pesan" rows="3">Halo Regial, saya butuh website untuk toko kue saya.</textarea></div>
+      <div class="formfoot"><span class="dim">atau langsung: <span class="mailline acc">nama@email.com</span></span><button class="btn primary" type="submit">enter ↵</button></div>
+      <span id="out" role="status"></span>
+    </form>
+  </section>
+
+  <footer><span>© 2026 regial habib · exit 0</span><span>mockup 3/4 · developer terminal</span></footer>
+</div>
+
+<script>
+const root = document.documentElement;
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+document.getElementById('themeToggle').addEventListener('click', () => { root.dataset.theme = isDark() ? 'light' : 'dark'; });
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('out').textContent = '✓ contoh saja: di versi asli, pesan dikirim lewat form service';
+});
+</script>

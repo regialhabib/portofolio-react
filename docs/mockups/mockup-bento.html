@@ -1,0 +1,288 @@
+<title>Mockup Bento Grid</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: satu bento grid 6 kolom; tiap section = tile dengan ukuran berbeda, satu aksen kobalt */
+:root {
+  --bg: #F2F3F7;
+  --surface: #FFFFFF;
+  --fg: #13151B;
+  --muted: #5C6273;
+  --line: #E1E4EC;
+  --accent: #3550F2;
+  --accent-soft: #E6EAFF;
+  --on-accent: #FFFFFF;
+  --ok: #1E9E5A;
+  --display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --r: 22px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B0D12; --surface: #151821; --fg: #ECEEF5; --muted: #9298AA; --line: #252937;
+    --accent: #8A9BFF; --accent-soft: #1D2343; --on-accent: #0B0D12; --ok: #4CD08A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B0D12; --surface: #151821; --fg: #ECEEF5; --muted: #9298AA; --line: #252937;
+  --accent: #8A9BFF; --accent-soft: #1D2343; --on-accent: #0B0D12; --ok: #4CD08A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+  transition: background .3s, color .3s;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+/* header */
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 4px; }
+.logo { font-family: var(--display); font-weight: 800; font-size: 22px; text-decoration: none; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+nav a { text-decoration: none; font-weight: 500; color: var(--muted); padding: 6px 12px; border-radius: 999px; transition: background .2s, color .2s; }
+nav a:hover { background: var(--surface); color: var(--fg); }
+.icon-btn { width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; display: grid; place-items: center; }
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* grid */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.tile {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 26px;
+  min-width: 0; display: flex; flex-direction: column; gap: 14px;
+  animation: rise .6s cubic-bezier(.2,.7,.2,1) both;
+}
+.tile:nth-child(2) { animation-delay: .06s } .tile:nth-child(3) { animation-delay: .12s }
+.tile:nth-child(4) { animation-delay: .18s } .tile:nth-child(5) { animation-delay: .24s }
+@keyframes rise { from { transform: translateY(14px); opacity: .4 } to { transform: none; opacity: 1 } }
+.s2 { grid-column: span 2 } .s3 { grid-column: span 3 } .s4 { grid-column: span 4 } .s6 { grid-column: span 6 }
+.r2 { grid-row: span 2 }
+.label { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+.hero h1 { font-size: clamp(34px, 5.2vw, 60px); line-height: 1.02; font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { color: var(--muted); max-width: 52ch; font-size: 16px; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; background: var(--bg); border-radius: 999px; padding: 6px 12px; align-self: flex-start; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 25%, transparent); }
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 14px var(--body); padding: 12px 20px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; transition: transform .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+.photo { padding: 0; overflow: hidden; position: relative; min-height: 240px; background: var(--accent); border: 0; }
+.photo .initials { position: absolute; inset: 0; display: grid; place-items: center; font: 800 96px/1 var(--display); color: var(--on-accent); opacity: .95; }
+.photo .ring { position: absolute; width: 140%; aspect-ratio: 1; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--on-accent) 30%, transparent); left: -20%; top: 30%; }
+.photo .ring.b { top: 55%; }
+.photo .cap { position: absolute; left: 16px; bottom: 14px; font-size: 12px; color: var(--on-accent); font-weight: 600; opacity: .85; }
+
+.mini { justify-content: space-between; }
+.big-num { font: 800 44px/1 var(--display); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+
+.about p { color: var(--muted); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: auto; }
+.stat { background: var(--bg); border-radius: 14px; padding: 12px 14px; }
+.stat b { display: block; font: 800 26px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
+.chip.hl { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); margin-top: auto; }
+.marquee .track { display: flex; gap: 22px; width: max-content; animation: slide 22s linear infinite; font: 700 22px var(--display); color: var(--muted); }
+.marquee .track span:nth-child(odd) { color: var(--fg); }
+@keyframes slide { to { transform: translateX(-50%) } }
+
+.timeline { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+.timeline li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.timeline li:first-child { border-top: 0; padding-top: 0; }
+.timeline .yr { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.timeline h3 { font-size: 17px; font-weight: 700; }
+.timeline p { font-size: 13.5px; color: var(--muted); }
+
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 18px 4px 0; }
+.section-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); padding: 4px; border-radius: 999px; flex-wrap: wrap; }
+.tabs button { font: 600 13px var(--body); border: 0; background: transparent; color: var(--muted); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.tabs button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+.proj { padding: 14px; gap: 12px; cursor: pointer; transition: transform .25s, border-color .25s; text-decoration: none; }
+.proj:hover { transform: translateY(-4px); border-color: var(--accent); }
+.thumb { border-radius: 14px; aspect-ratio: 16 / 9; max-width: 100%; position: relative; overflow: hidden; background: var(--accent-soft); }
+.s4 .thumb { aspect-ratio: 21 / 9; }
+.thumb i { position: absolute; display: block; border-radius: 10px; background: var(--surface); box-shadow: 0 8px 24px rgb(0 0 0 / .08); }
+.thumb i.a { left: 8%; top: 18%; width: 46%; height: 64%; }
+.thumb i.b { right: 8%; top: 18%; width: 30%; height: 28%; }
+.thumb i.c { right: 8%; bottom: 18%; width: 30%; height: 28%; background: var(--accent); }
+.proj .meta { display: flex; justify-content: space-between; gap: 10px; align-items: start; padding: 4px 8px 6px; }
+.proj h3 { font-size: 20px; }
+.proj p { font-size: 13.5px; color: var(--muted); }
+.arrow { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--bg); transition: background .2s, color .2s, transform .2s; }
+.proj:hover .arrow { background: var(--accent); color: var(--on-accent); transform: rotate(-45deg); }
+.proj[hidden] { display: none; }
+
+.contact { background: var(--fg); color: var(--bg); border: 0; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 36px; }
+.contact h2 { font-size: clamp(28px, 4.4vw, 48px); font-weight: 800; max-width: 16ch; }
+.contact .mail { font: 700 18px var(--display); user-select: all; }
+.contact .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.contact .btn { background: var(--bg); color: var(--fg); border-color: transparent; }
+.contact .btn.primary { background: var(--accent); color: var(--on-accent); }
+footer { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); padding: 8px 4px; }
+
+@media (max-width: 900px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .s2, .s3 { grid-column: span 1 } .s4, .s6 { grid-column: span 2 } .r2 { grid-row: auto }
+}
+@media (max-width: 600px) {
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .s2, .s3, .s4, .s6 { grid-column: span 1 }
+  nav a { display: none; }
+  .tile { padding: 20px; }
+  .contact { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top">RH<span>.</span></a>
+    <nav aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#project">Project</a>
+      <a href="#kontak">Kontak</a>
+      <button class="icon-btn" id="themeToggle" aria-label="Ganti tema terang/gelap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <section class="bento" id="top">
+    <div class="tile hero s4 r2">
+      <span class="status"><span class="dot"></span>Terbuka untuk project freelance</span>
+      <h1>Halo, saya Regial. Saya membangun web yang <em>cepat</em> dan enak dipakai.</h1>
+      <p>Web developer yang fokus di React dan antarmuka yang rapi. Saya suka mengubah ide yang masih berantakan jadi produk yang jelas alurnya.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#project">Lihat project →</a>
+        <a class="btn" href="#kontak">Hubungi saya</a>
+      </div>
+    </div>
+    <div class="tile photo s2" aria-label="Foto profil (placeholder)">
+      <span class="ring"></span><span class="ring b"></span>
+      <span class="initials">RH</span>
+      <span class="cap">Foto profil di sini</span>
+    </div>
+    <div class="tile mini s2">
+      <span class="label">Lokasi</span>
+      <div><div class="big-num" id="clock">--:--</div><p style="color:var(--muted);font-size:13px">Indonesia · WIB (UTC+7)</p></div>
+    </div>
+
+    <div class="tile about s3" id="tentang">
+      <span class="label">Tentang</span>
+      <h2 style="font-size:26px">Detail kecil yang bikin produk terasa matang.</h2>
+      <p>Lulusan Teknik Informatika yang sekarang bekerja sebagai frontend developer. Saya terbiasa kerja bareng desainer dan backend developer, dari wireframe sampai deploy.</p>
+      <div class="stats">
+        <div class="stat"><b>2+</b><span>tahun pengalaman</span></div>
+        <div class="stat"><b>12</b><span>project selesai</span></div>
+        <div class="stat"><b>6</b><span>klien</span></div>
+      </div>
+    </div>
+    <div class="tile s3">
+      <span class="label">Tech stack</span>
+      <div class="chips">
+        <span class="chip hl">React</span><span class="chip hl">JavaScript</span><span class="chip hl">Tailwind CSS</span>
+        <span class="chip">shadcn/ui</span><span class="chip">Node.js</span><span class="chip">Express</span>
+        <span class="chip">PostgreSQL</span><span class="chip">Git</span><span class="chip">Figma</span>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          <span>React</span><span>Vite</span><span>Tailwind</span><span>Node.js</span><span>PostgreSQL</span><span>Figma</span>
+          <span>React</span><span>Vite</span><span>Tailwind</span><span>Node.js</span><span>PostgreSQL</span><span>Figma</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile s6" id="pengalaman">
+      <span class="label">Pengalaman & pendidikan</span>
+      <ul class="timeline">
+        <li><span class="yr">2024 — kini</span><div><h3>Frontend Developer · PT Contoh Digital</h3><p>Membangun dashboard internal dengan React dan shadcn/ui, memangkas waktu muat halaman utama dari 4,1 s ke 1,6 s.</p></div></li>
+        <li><span class="yr">2023</span><div><h3>Web Developer Intern · Studio Contoh</h3><p>Mengerjakan 5 landing page klien UMKM dan merapikan komponen UI yang dipakai ulang.</p></div></li>
+        <li><span class="yr">2020 — 2024</span><div><h3>S1 Teknik Informatika · Universitas Contoh</h3><p>Skripsi: sistem antrean online untuk puskesmas.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-head" id="project">
+    <h2>Project pilihan</h2>
+    <div class="tabs" role="group" aria-label="Filter project">
+      <button aria-pressed="true" data-f="all">Semua</button>
+      <button aria-pressed="false" data-f="app">Web App</button>
+      <button aria-pressed="false" data-f="dash">Dashboard</button>
+      <button aria-pressed="false" data-f="land">Landing Page</button>
+    </div>
+  </div>
+  <section class="bento" id="projects">
+    <a class="tile proj s4" data-c="app" href="#project">
+      <div class="thumb"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><h3>Kasirku</h3><p>Aplikasi kasir untuk UMKM: stok, transaksi, laporan harian. React · Node.js · PostgreSQL</p></div><span class="arrow">→</span></div>
+    </a>
+    <a class="tile proj s2" data-c="dash" href="#project">
+      <div class="thumb"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><h3>SIAKAD Mini</h3><p>Dashboard nilai & jadwal mahasiswa. React · Chart.js</p></div><span class="arrow">→</span></div>
+    </a>
+    <a class="tile proj s3" data-c="land" href="#project">
+      <div class="thumb"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><h3>Jejak Rasa</h3><p>Landing page kuliner dengan peta lokasi. Vite · Tailwind</p></div><span class="arrow">→</span></div>
+    </a>
+    <a class="tile proj s3" data-c="app" href="#project">
+      <div class="thumb"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><h3>Laporin</h3><p>Aplikasi pengaduan warga dengan status laporan real-time. React · Express</p></div><span class="arrow">→</span></div>
+    </a>
+
+    <div class="tile contact s6" id="kontak">
+      <h2>Punya project? Ayo ngobrol.</h2>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span class="mail" id="mail">nama@email.com</span>
+        <div class="row">
+          <button class="btn primary" id="copy">Salin email</button>
+          <a class="btn" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Regial Habib</span><span>Mockup 1 dari 4 · Bento grid modern</span></footer>
+</div>
+
+<script>
+const root = document.documentElement;
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+document.getElementById('themeToggle').addEventListener('click', () => { root.dataset.theme = isDark() ? 'light' : 'dark'; });
+
+const clock = document.getElementById('clock');
+const tick = () => { clock.textContent = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' }).format(new Date()); };
+tick(); setInterval(tick, 30000);
+
+document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  document.querySelectorAll('.proj').forEach(p => { p.hidden = b.dataset.f !== 'all' && p.dataset.c !== b.dataset.f; });
+}));
+
+document.getElementById('copy').addEventListener('click', e => {
+  const btn = e.currentTarget, text = document.getElementById('mail').textContent;
+  navigator.clipboard.writeText(text).then(() => { btn.textContent = 'Tersalin'; setTimeout(() => btn.textContent = 'Salin email', 1500); })
+    .catch(() => { const r = document.createRange(); r.selectNodeContents(document.getElementById('mail')); getSelection().removeAllRanges(); getSelection().addRange(r); });
+});
+</script>

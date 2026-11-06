@@ -1,0 +1,412 @@
+<title>Mockup Jalan Tengah</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: bento grid + label terminal (dasar), ditambah 3 sentuhan playful: sorotan warna di headline, kartu statistik berwarna, kartu project miring */
+:root {
+  --bg: #F2F3F7;
+  --surface: #FFFFFF;
+  --fg: #13151B;
+  --muted: #5C6273;
+  --line: #E1E4EC;
+  --accent: #3550F2;
+  --accent-soft: #E6EAFF;
+  --on-accent: #FFFFFF;
+  --ok: #1E9E5A;
+  --pink: #FF6B93;
+  --yellow: #FFC940;
+  --mint: #33CC99;
+  --on-color: #13151B;
+  --header: rgb(242 243 247 / .82);
+  --display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --r: 22px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B0D12; --surface: #151821; --fg: #ECEEF5; --muted: #9298AA; --line: #252937;
+    --accent: #8A9BFF; --accent-soft: #1D2343; --on-accent: #0B0D12; --ok: #4CD08A;
+    --pink: #FF7FA3; --yellow: #FFD25E; --mint: #4AD9A8; --on-color: #13151B; --header: rgb(11 13 18 / .82);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B0D12; --surface: #151821; --fg: #ECEEF5; --muted: #9298AA; --line: #252937;
+  --accent: #8A9BFF; --accent-soft: #1D2343; --on-accent: #0B0D12; --ok: #4CD08A;
+  --pink: #FF7FA3; --yellow: #FFD25E; --mint: #4AD9A8; --on-color: #13151B; --header: rgb(11 13 18 / .82);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+  transition: background .3s, color .3s;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+/* aksen terminal */
+.path { font-family: var(--mono); font-size: 12.5px; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+.path .p { color: var(--accent); font-weight: 700; }
+.path .c { color: var(--fg); }
+.cursor { display: inline-block; width: .55em; height: 1.05em; background: var(--accent); vertical-align: -0.15em; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0 } }
+
+/* header (sticky) */
+header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 4px; margin-bottom: 4px;
+  background: var(--header); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.logo { font-family: var(--mono); font-weight: 700; font-size: 16px; text-decoration: none; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 2px; align-items: center; flex-wrap: wrap; }
+nav a { text-decoration: none; font-weight: 500; color: var(--muted); padding: 6px 12px; border-radius: 999px; transition: background .2s, color .2s; }
+nav a:hover, nav a.active { background: var(--surface); color: var(--fg); }
+.icon-btn { width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; display: grid; place-items: center; margin-left: 6px; }
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* grid */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.tile {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 26px;
+  min-width: 0; display: flex; flex-direction: column; gap: 14px;
+  animation: rise .6s cubic-bezier(.2,.7,.2,1) backwards;
+}
+.tile:nth-child(2) { animation-delay: .06s } .tile:nth-child(3) { animation-delay: .12s }
+.tile:nth-child(4) { animation-delay: .18s } .tile:nth-child(5) { animation-delay: .24s }
+@keyframes rise { from { transform: translateY(14px); opacity: .4 } to { transform: none; opacity: 1 } }
+.s2 { grid-column: span 2 } .s3 { grid-column: span 3 } .s4 { grid-column: span 4 } .s6 { grid-column: span 6 }
+.r2 { grid-row: span 2 }
+
+/* hero + sorotan warna (playful #1) */
+.hero h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.12; font-weight: 800; }
+.nw { white-space: nowrap; }
+.mk { display: inline-block; padding: 0 .16em; border-radius: .22em; color: var(--on-color); line-height: 1.05; transform: rotate(-1.5deg); transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.mk.pink { background: var(--pink); }
+.mk.yellow { background: var(--yellow); transform: rotate(1.2deg); }
+.mk.mint { background: var(--mint); transform: rotate(-1deg); }
+.hero h1:hover .mk { transform: rotate(0) translateY(-2px); }
+.hero p { color: var(--muted); max-width: 52ch; font-size: 16px; }
+.hero-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; background: var(--bg); border-radius: 999px; padding: 6px 12px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 25%, transparent); }
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 14px var(--body); padding: 12px 20px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; transition: transform .2s, box-shadow .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn.primary:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--fg); }
+
+.photo { padding: 0; overflow: hidden; position: relative; min-height: 240px; background: var(--accent); border: 0; }
+.photo .initials { position: absolute; inset: 0; display: grid; place-items: center; font: 800 96px/1 var(--display); color: var(--on-accent); }
+.photo .ring { position: absolute; width: 140%; aspect-ratio: 1; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--on-accent) 30%, transparent); left: -20%; top: 30%; }
+.photo .ring.b { top: 55%; }
+.photo .cap { position: absolute; left: 16px; bottom: 14px; font: 12px var(--mono); color: var(--on-accent); opacity: .85; }
+.sticker { position: absolute; right: 14px; top: 14px; background: var(--yellow); color: var(--on-color); font: 800 14px var(--display); padding: 6px 12px; border-radius: 10px; transform: rotate(8deg); box-shadow: 3px 3px 0 rgb(0 0 0 / .18); transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.photo:hover .sticker { transform: rotate(-4deg) scale(1.08); }
+
+.mini { justify-content: space-between; }
+.big-num { font: 700 40px/1 var(--mono); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.mini small { color: var(--muted); font-size: 13px; }
+
+/* kartu statistik berwarna (playful #2) */
+.about p { color: var(--muted); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: auto; }
+.stat { border-radius: 16px; padding: 14px; color: var(--on-color); transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.stat:nth-child(1) { background: var(--yellow); }
+.stat:nth-child(2) { background: var(--mint); }
+.stat:nth-child(3) { background: var(--pink); }
+.stat:nth-child(odd):hover { transform: rotate(-3deg) scale(1.04); }
+.stat:nth-child(even):hover { transform: rotate(3deg) scale(1.04); }
+.stat b { display: block; font: 800 30px/1.05 var(--display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; font-weight: 600; }
+
+.stack-groups { display: flex; flex-direction: column; gap: 12px; }
+.group { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px; align-items: start; }
+.group .k { font: 12.5px var(--mono); color: var(--accent); padding-top: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
+.marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); margin-top: auto; }
+.marquee .track { display: flex; gap: 18px; width: max-content; animation: slide 24s linear infinite; font: 700 20px var(--display); }
+.marquee .track span::after { content: "✦"; margin-left: 18px; color: var(--pink); }
+@keyframes slide { to { transform: translateX(-50%) } }
+
+.timeline { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; }
+.timeline li { display: grid; grid-template-columns: 90px 110px minmax(0, 1fr); gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.timeline li:first-child { border-top: 0; padding-top: 0; }
+.timeline .hash { font: 13px var(--mono); color: var(--accent); padding-top: 2px; }
+.timeline .yr { font: 13px var(--mono); color: var(--muted); padding-top: 2px; font-variant-numeric: tabular-nums; }
+.timeline h3 { font-size: 17px; font-weight: 700; }
+.timeline p { font-size: 13.5px; color: var(--muted); }
+.head-tag { font: 700 11px var(--mono); color: var(--on-color); background: var(--mint); border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 22px 4px 0; }
+.section-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-top: 4px; }
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); padding: 4px; border-radius: 999px; flex-wrap: wrap; }
+.tabs button { font: 600 13px var(--body); border: 0; background: transparent; color: var(--muted); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.tabs button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+/* kartu project miring (playful #3) */
+.projects { padding-block: 6px; }
+.proj { padding: 14px; gap: 12px; cursor: pointer; text-align: left; font: inherit; color: inherit; transition: transform .35s cubic-bezier(.3,1.6,.5,1), border-color .25s, box-shadow .25s; }
+.proj.tl { transform: rotate(-1.2deg); }
+.proj.tr { transform: rotate(1.2deg); }
+.proj:hover { transform: rotate(0) translateY(-6px); border-color: var(--fg); box-shadow: 6px 6px 0 var(--fg); }
+.thumb { border-radius: 14px; aspect-ratio: 16 / 9; max-width: 100%; position: relative; overflow: hidden; --c: var(--accent); background: color-mix(in srgb, var(--c) 22%, var(--surface)); }
+.thumb.pink { --c: var(--pink); } .thumb.yellow { --c: var(--yellow); } .thumb.mint { --c: var(--mint); }
+.s4 .thumb { aspect-ratio: 21 / 9; }
+.thumb i { position: absolute; display: block; border-radius: 10px; background: var(--surface); box-shadow: 0 8px 24px rgb(0 0 0 / .08); }
+.thumb i.a { left: 8%; top: 18%; width: 46%; height: 64%; }
+.thumb i.b { right: 8%; top: 18%; width: 30%; height: 28%; border-radius: 999px; }
+.thumb i.c { right: 8%; bottom: 18%; width: 30%; height: 28%; background: var(--c); }
+.proj .meta { display: flex; justify-content: space-between; gap: 10px; align-items: start; padding: 2px 8px 6px; }
+.proj .kind { font: 12px var(--mono); color: var(--muted); }
+.proj h3 { font-size: 20px; margin-top: 2px; }
+.proj p { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+.arrow { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--bg); transition: background .2s, color .2s, transform .3s; }
+.proj:hover .arrow { background: var(--yellow); color: var(--on-color); transform: rotate(-45deg); }
+
+.contact { background: var(--fg); color: var(--bg); border: 0; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 36px; position: relative; overflow: hidden; }
+.contact .path, .contact .path .c { color: var(--bg); opacity: .8; }
+.contact h2 { font-size: clamp(28px, 4.4vw, 48px); font-weight: 800; max-width: 16ch; margin-top: 8px; }
+.contact h2 .mk { color: var(--on-color); }
+.contact .mail { font: 700 18px var(--mono); user-select: all; overflow-wrap: anywhere; }
+.contact .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.contact .btn { background: var(--bg); color: var(--fg); border-color: transparent; }
+.contact .btn.primary { background: var(--accent); color: var(--on-accent); }
+.contact .btn.primary:hover { box-shadow: 4px 4px 0 var(--pink); }
+footer { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font: 12px var(--mono); color: var(--muted); padding: 8px 4px; }
+
+/* dialog detail project */
+dialog { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--fg); padding: 0; width: min(560px, calc(100% - 32px)); }
+dialog::backdrop { background: rgb(5 6 10 / .55); backdrop-filter: blur(3px); }
+dialog .thumb { border-radius: 0; aspect-ratio: 21 / 9; }
+dialog .inner { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+dialog h3 { font-size: 26px; }
+dialog p { color: var(--muted); }
+dialog .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-top: 6px; }
+dialog .close { position: absolute; right: 12px; top: 12px; }
+dialog[open] { animation: pop .3s cubic-bezier(.3,1.5,.5,1); }
+@keyframes pop { from { transform: translateY(12px) scale(.96) rotate(-1deg); opacity: 0 } }
+
+@media (max-width: 900px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .s2, .s3 { grid-column: span 1 } .s4, .s6 { grid-column: span 2 } .r2 { grid-row: auto }
+  .timeline li { grid-template-columns: 80px minmax(0, 1fr); }
+  .timeline .yr { grid-column: 2; grid-row: 1; }
+  .timeline li > div { grid-column: 2; }
+}
+@media (max-width: 600px) {
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .s2, .s3, .s4, .s6 { grid-column: span 1 }
+  nav a { display: none; }
+  .tile { padding: 20px; }
+  .contact { padding: 24px; }
+  .group { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .group .k { padding-top: 0; }
+  .proj.tl, .proj.tr { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top"><span>~/</span>regial</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#tentang">Tentang</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#project">Project</a>
+      <a href="#kontak">Kontak</a>
+      <button class="icon-btn" id="themeToggle" aria-label="Ganti tema terang/gelap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <section class="bento" id="top">
+    <div class="tile hero s4 r2">
+      <div class="hero-top">
+        <span class="path"><span class="p">$</span><span class="c">whoami</span></span>
+        <span class="status"><span class="dot"></span>Terbuka untuk freelance</span>
+      </div>
+      <h1>Halo, saya Regial. Saya membangun web yang <span class="nw"><span class="mk pink">cepat</span>,</span> <span class="nw"><span class="mk yellow">rapi</span>,</span> dan <span class="nw"><span class="mk mint">enak dipakai</span>.</span></h1>
+      <p>Web developer yang fokus di React dan antarmuka yang rapi. Saya suka mengubah ide yang masih berantakan jadi produk yang jelas alurnya.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#project">Lihat project →</a>
+        <a class="btn" href="#kontak">Hubungi saya</a>
+      </div>
+    </div>
+    <div class="tile photo s2" aria-label="Foto profil (placeholder)">
+      <span class="ring"></span><span class="ring b"></span>
+      <span class="initials">RH</span>
+      <span class="sticker">Hai!</span>
+      <span class="cap">./foto-profil.jpg</span>
+    </div>
+    <div class="tile mini s2">
+      <span class="path"><span class="p">$</span><span class="c">date</span><span>--tz WIB</span></span>
+      <div><div class="big-num" id="clock">--:--</div><small>Indonesia · UTC+7</small></div>
+    </div>
+
+    <div class="tile about s3" id="tentang">
+      <span class="path"><span class="p">~/</span><span class="c">tentang.md</span></span>
+      <h2 style="font-size:26px">Detail kecil yang bikin produk terasa matang.</h2>
+      <p>Lulusan Teknik Informatika yang sekarang bekerja sebagai frontend developer. Saya terbiasa kerja bareng desainer dan backend developer, dari wireframe sampai deploy.</p>
+      <div class="stats">
+        <div class="stat"><b>2+</b><span>tahun pengalaman</span></div>
+        <div class="stat"><b>12</b><span>project selesai</span></div>
+        <div class="stat"><b>6</b><span>klien</span></div>
+      </div>
+    </div>
+    <div class="tile s3">
+      <span class="path"><span class="p">~/</span><span class="c">stack.json</span></span>
+      <div class="stack-groups">
+        <div class="group"><span class="k">"frontend"</span><div class="chips"><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">Tailwind CSS</span><span class="chip">shadcn/ui</span></div></div>
+        <div class="group"><span class="k">"backend"</span><div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">PostgreSQL</span></div></div>
+        <div class="group"><span class="k">"tools"</span><div class="chips"><span class="chip">Git</span><span class="chip">Figma</span><span class="chip">Vercel</span></div></div>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          <span>React</span><span>Vite</span><span>Tailwind</span><span>Node.js</span><span>PostgreSQL</span><span>Figma</span>
+          <span>React</span><span>Vite</span><span>Tailwind</span><span>Node.js</span><span>PostgreSQL</span><span>Figma</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile s6" id="pengalaman">
+      <span class="path"><span class="p">$</span><span class="c">git log --karier</span></span>
+      <ul class="timeline">
+        <li><span class="hash">a3f9c21</span><span class="yr">2024 — kini</span><div><h3>Frontend Developer · PT Contoh Digital <span class="head-tag">HEAD</span></h3><p>Membangun dashboard internal dengan React dan shadcn/ui. Waktu muat halaman utama turun dari 4,1 s ke 1,6 s.</p></div></li>
+        <li><span class="hash">7b2e0d4</span><span class="yr">2023</span><div><h3>Web Developer Intern · Studio Contoh</h3><p>Mengerjakan 5 landing page klien UMKM dan merapikan komponen UI yang dipakai ulang.</p></div></li>
+        <li><span class="hash">1c08aa9</span><span class="yr">2020 — 2024</span><div><h3>S1 Teknik Informatika · Universitas Contoh</h3><p>Skripsi: sistem antrean online untuk puskesmas.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-head" id="project">
+    <div>
+      <span class="path"><span class="p">$</span><span class="c">ls ./project</span></span>
+      <h2>Project pilihan</h2>
+    </div>
+    <div class="tabs" role="group" aria-label="Filter project">
+      <button aria-pressed="true" data-f="all">Semua</button>
+      <button aria-pressed="false" data-f="app">Web App</button>
+      <button aria-pressed="false" data-f="dash">Dashboard</button>
+      <button aria-pressed="false" data-f="land">Landing Page</button>
+    </div>
+  </div>
+  <section class="bento projects">
+    <button class="tile proj s4 tl" data-c="app" data-id="kasirku">
+      <div class="thumb"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><span class="kind">web-app · 2025</span><h3>Kasirku</h3><p>Aplikasi kasir untuk UMKM: stok, transaksi, laporan harian.</p></div><span class="arrow">→</span></div>
+    </button>
+    <button class="tile proj s2 tr" data-c="dash" data-id="siakad">
+      <div class="thumb yellow"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><span class="kind">dashboard · 2024</span><h3>SIAKAD Mini</h3><p>Dashboard nilai & jadwal mahasiswa.</p></div><span class="arrow">→</span></div>
+    </button>
+    <button class="tile proj s3 tr" data-c="land" data-id="jejak">
+      <div class="thumb pink"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><span class="kind">landing · 2023</span><h3>Jejak Rasa</h3><p>Landing page kuliner dengan peta lokasi warung.</p></div><span class="arrow">→</span></div>
+    </button>
+    <button class="tile proj s3 tl" data-c="app" data-id="laporin">
+      <div class="thumb mint"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+      <div class="meta"><div><span class="kind">web-app · 2025</span><h3>Laporin</h3><p>Pengaduan warga dengan status laporan yang bisa dipantau.</p></div><span class="arrow">→</span></div>
+    </button>
+  </section>
+
+  <section class="bento">
+    <div class="tile contact s6" id="kontak">
+      <div>
+        <span class="path"><span class="p">$</span><span class="c">mail --to regial</span><span class="cursor"></span></span>
+        <h2>Punya project? Ayo <span class="mk pink">ngobrol</span>.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+        <span class="mail" id="mail">nama@email.com</span>
+        <div class="row">
+          <button class="btn primary" id="copy">Salin email</button>
+          <a class="btn" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Regial Habib · exit 0</span><span>Mockup jalan tengah · Bento terminal + sentuhan playful</span></footer>
+</div>
+
+<dialog id="detail" aria-labelledby="dTitle">
+  <div class="thumb" id="dThumb"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+  <button class="icon-btn close" id="dClose" aria-label="Tutup">✕</button>
+  <div class="inner">
+    <span class="path" id="dKind"></span>
+    <h3 id="dTitle"></h3>
+    <p id="dDesc"></p>
+    <div class="chips" id="dStack"></div>
+    <div class="row">
+      <span class="path">Esc atau klik di luar untuk menutup</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn" href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn primary" href="https://vercel.com" target="_blank" rel="noopener">Live demo ↗</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const root = document.documentElement;
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+document.getElementById('themeToggle').addEventListener('click', () => { root.dataset.theme = isDark() ? 'light' : 'dark'; });
+
+const clock = document.getElementById('clock');
+const tick = () => { clock.textContent = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' }).format(new Date()); };
+tick(); setInterval(tick, 30000);
+
+document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  document.querySelectorAll('.proj').forEach(p => { p.hidden = b.dataset.f !== 'all' && p.dataset.c !== b.dataset.f; });
+}));
+
+const projects = {
+  kasirku: { color: '', kind: 'web-app · 2025', title: 'Kasirku', desc: 'Aplikasi kasir untuk UMKM. Pemilik toko bisa mencatat transaksi, memantau stok, dan melihat laporan penjualan harian dari HP maupun laptop.', stack: ['React', 'Node.js', 'Express', 'PostgreSQL'] },
+  siakad: { color: 'yellow', kind: 'dashboard · 2024', title: 'SIAKAD Mini', desc: 'Dashboard akademik sederhana untuk melihat nilai per semester, IPK, dan jadwal kuliah mingguan.', stack: ['React', 'Chart.js', 'Tailwind CSS'] },
+  jejak: { color: 'pink', kind: 'landing · 2023', title: 'Jejak Rasa', desc: 'Landing page untuk komunitas kuliner lokal, lengkap dengan daftar warung dan peta lokasinya.', stack: ['Vite', 'Tailwind CSS', 'Leaflet'] },
+  laporin: { color: 'mint', kind: 'web-app · 2025', title: 'Laporin', desc: 'Aplikasi pengaduan warga. Laporan bisa dilampiri foto dan statusnya dipantau dari diterima sampai selesai.', stack: ['React', 'Express', 'PostgreSQL'] }
+};
+const dlg = document.getElementById('detail');
+document.querySelectorAll('.proj').forEach(card => card.addEventListener('click', () => {
+  const p = projects[card.dataset.id];
+  document.getElementById('dThumb').className = 'thumb ' + p.color;
+  document.getElementById('dKind').textContent = p.kind;
+  document.getElementById('dTitle').textContent = p.title;
+  document.getElementById('dDesc').textContent = p.desc;
+  document.getElementById('dStack').innerHTML = p.stack.map(s => `<span class="chip">${s}</span>`).join('');
+  dlg.showModal();
+}));
+document.getElementById('dClose').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+const links = [...document.querySelectorAll('nav a')];
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+}), { rootMargin: '-40% 0px -55% 0px' });
+['tentang', 'pengalaman', 'project', 'kontak'].forEach(id => io.observe(document.getElementById(id)));
+
+document.getElementById('copy').addEventListener('click', e => {
+  const btn = e.currentTarget, el = document.getElementById('mail');
+  navigator.clipboard.writeText(el.textContent).then(() => { btn.textContent = 'Tersalin!'; setTimeout(() => btn.textContent = 'Salin email', 1500); })
+    .catch(() => { const r = document.createRange(); r.selectNodeContents(el); getSelection().removeAllRanges(); getSelection().addRange(r); });
+});
+</script>
